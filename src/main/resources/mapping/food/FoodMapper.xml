@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cccuu.project.mapper.food.FoodMapper" >
+	<select id="queryListByParams" resultType="java.util.Map">
+  	select f.*,t.id,t.name as typeName from t_food f LEFT JOIN t_food_type t ON f.type_id=t.id
+    <where>
+        <if test="1==1">
+            1=1
+        </if>
+        <if test="typeId != null" >
+            and f.type_id =  #{typeId,jdbcType=VARCHAR}
+        </if>
+        <if test="foodName != null" >
+            and f.food_name like CONCAT('%',CONCAT(#{foodName,jdbcType=VARCHAR},'%'))
+        </if>
+        <if test="jianpin != null" >
+            and f.jianpin like CONCAT('%',CONCAT(#{jianpin,jdbcType=VARCHAR},'%'))
+        </if>
+        <if test="keyword != null" >
+            and (f.jianpin like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%')) or f.food_name like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%')) )
+        </if>
+    </where>
+    order by f.create_time desc
+    </select>
+    <select id="queryAll" resultType="java.util.Map">
+        select f.* from t_food f order by f.create_time desc
+    </select>
+
+    <select id="queryListByMapDouble" resultMap="ordersAndOrderDetailResultMap">
+        SELECT p.*,f.id as f_id,f.food_name as f_food_name,f.type_id as f_type_id,f.jianpin as f_jianpin,f.create_time as f_create_time FROM t_food f
+        LEFT JOIN t_product_food pf ON pf.food_id = f.id
+        LEFT JOIN t_product p ON pf.product_id = p.id AND p.reserved1='0'
+        where 1=1
+        <if test="keyword != null" >
+            and (f.jianpin like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%')) or f.food_name like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%')) )
+        </if>
+        ORDER BY LEFT(IFNULL(f.jianpin,'z'),1) ASC,IFNULL(pf.sort,0) ASC
+    </select>
+
+    <resultMap type="com.cccuu.project.model.DTO.FoodDTO" id="ordersAndOrderDetailResultMap">
+        <id column="f_id" property="id"/>
+        <result column="f_food_name" property="food_name"/>
+        <result column="f_type_id" property="type_id"/>
+        <result column="f_create_time" property="create_time"/>
+        <result column="f_jianpin" property="jianpin"/>
+        <!-- 关联产品 -->
+        <collection property="products" ofType="com.cccuu.project.model.DTO.ProductDTO">
+            <id column="id" property="id"/>
+            <result column="product_name" property="product_name"/>
+            <result column="jianpin" property="jianpin"/>
+            <result column="type_id" property="type_id"/>
+            <result column="product_num" property="product_num"/>
+            <result column="spec" property="spec"/>
+            <result column="retail_price_bag" property="retail_price_bag"/>
+            <result column="retail_price_box" property="retail_price_box"/>
+            <result column="sell_price_bag" property="sell_price_bag"/>
+            <result column="sell_price_box" property="sell_price_box"/>
+            <result column="remark" property="remark"/>
+            <result column="sort" property="sort"/>
+            <result column="create_time" property="create_time"/>
+            <result column="num_box" property="num_box"/>
+        </collection>
+    </resultMap>
+</mapper>

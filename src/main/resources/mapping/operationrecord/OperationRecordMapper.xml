@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cccuu.project.mapper.operationrecord.OperationRecordMapper" >
+    <select id="queryListByParams" resultType="java.util.Map" parameterType="java.util.Map">
+        select t.is_import_time,t.id,t.user_id AS userId,t.content,t.create_time AS createTime,t.order_tel AS orderTel,d.name AS userName
+        FROM t_operation_record t LEFT JOIN t_user d ON d.id=t.user_id
+        <where>
+            <if test="1==1">
+                1=1
+            </if>
+            <if test="telList != null and telList.length != 0" >
+                and t.order_tel IN
+                <foreach collection="telList" item="tel"
+                         index="index" open="(" close=")" separator=",">
+                    #{tel}
+                </foreach>
+            </if>
+            <if test="isImport != null" >
+                and t.is_import =  #{isImport,jdbcType=VARCHAR}
+            </if>
+        </where>
+        order by t.create_time desc
+    </select>
+
+    <insert id="addMulti" parameterType="java.util.List">
+        insert into t_operation_record (id,user_id,user_name, content, order_id,create_time, order_tel,is_import,is_import_time)
+        values
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.id},#{item.userId},#{item.userName},#{item.content},#{item.orderId},#{item.createTime},#{item.orderTel},#{item.isImport},#{item.isImportTime}
+            )
+        </foreach>
+    </insert>
+
+    <update id="updateImport">
+        UPDATE t_operation_record set is_import='0'
+    </update>
+</mapper>

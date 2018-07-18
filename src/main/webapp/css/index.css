@@ -1,0 +1,329 @@
+.dongdaibox{ margin:20px 5px 0 15px; border:1px solid #ededed;box-shadow:0 0 12px #eee;}
+.dongdaibox .biaoti{ overflow:hidden; height:46px; background-color:#f5f5f5; padding:0 7px; position:relative;}
+.dongdaibox .biaoti h6{ position:absolute; right:10px; top:6px;}
+.dongdaibox .biaoti h6 select{ border:1px solid #ccc; padding:5px; border-radius:4px;}
+.dongdaibox .biaoti>div{ float:left; overflow:hidden;}
+.dongdaibox .biaoti>div span{ display:block; float:left; width:3px; height:12px; background-color:#41973c; margin-top:17px;}
+.dongdaibox .biaoti>div b{ display:block; color:#333333; float:left; line-height:46px; margin-left:8px;}
+.dongdaibox .biaoti>div b a{ margin-left:45px; color:#41973c}
+.dongdaibox .biaoti1>div b a{ margin-left:0; color:#41973c}
+.dongdaibox .biaoti>div b a i{ color:#41973c}
+.dongdaibox .dongtai{ padding:15px;}
+.dongdaibox .dongtai .dbox{ overflow:hidden;}
+.dongdaibox .dongtai .dbox .left{ float:left; width:100%;}
+.dongdaibox .dongtai .dbox .left.lefton{ padding-right:15px;}
+.dongdaibox .dongtai .dbox .left dl{ overflow:hidden;}
+.dongdaibox .dongtai .dbox .left dl:first-child{ margin-bottom: 20px}
+.dongdaibox .dongtai .dbox .left dl dd{ float:left;}
+.dongdaibox .dongtai .dbox .left dl dd p{ width:100%;}
+.dongdaibox .dongtai .dbox .left dl dd p i{ margin-right:10px; margin-left:10px;}
+.dongdaibox .dongtai .dbox .left dl dd p a{ margin-right:25px; text-decoration:underline;}
+.dongdaibox .dongtai .dbox .left dl dd p a:hover{color:#41973c;}
+.dongdaibox .dongtai .dbox .left dl dd select{ width:278px; height:36px; background-color:#f5f5f5; border:1px solid #ededed; border-radius:4px; color:#555; padding-left:6px;}
+.dongdaibox .dongtai .dbox .left dl dd input{ width:230px; height:36px; background-color:#f5f5f5; border:1px solid #ededed; border-radius:4px; color:#555; padding-left:6px;}
+.dongdaibox .dongtai .dbox .left dl dd button{ padding:0 12px;background-color:#41973c;height:36px;border-radius:4px; color:#fff; border:none;cursor:pointer;}
+.dongdaibox .dongtai .dbox .left dl dd button.chaxun{background-color:#41973c; }
+.dongdaibox .dongtai .dbox .left dl dd button.chongzhi{background-color:#999999;}
+.dongdaibox .dongtai .dbox .left dl dt{ float:right;}
+.dongdaibox .dongtai .dbox .left dl dt button{ height:32px;border-radius:4px; color:#fff; border:none;background-color:#41973c;  color:#fff; padding:0 10px; cursor:pointer; }
+.dongdaibox .dongtai .dbox .left dl dt.abtn{ overflow:hidden;}
+.dongdaibox .dongtai .dbox .left dl dt a{ display:block; float:left; padding:7px 6px; border:1px solid #ccc; color:#888; font-size:14px; border-radius:4px; margin:0 3px;}
+.dongdaibox .dongtai .dbox .left dl dt a.on{ color:#fff; background-color:#41973c; border:1px solid #41973c}
+.dongdaibox .dongtai .dbox .left ul{ width:100%; height:248px; overflow-y:scroll; border:1px solid #ededed; border-radius:4px; padding:11px 15px 15px 15px; margin-top:15px;}
+.dongdaibox .dongtai .dbox .left ul li{ float:left; width:23%; line-height: 25px; background:url(../images/youjiantou.png) no-repeat center left; padding-left:10px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap; margin:4px 0; margin-right:2%;}
+.dongdaibox .dongtai .dbox .left ul li a{ color:#333; cursor:pointer; transition:all 0.6s}
+.dongdaibox .dongtai .dbox .left ul li a:hover{ color:#41973c; text-decoration:underline;}
+
+.dongdaibox .dongtai .dbox .right{ float:right; width:30%; height:298px; border:1px solid #ededed;border-radius:4px; position:relative;}
+.dongdaibox .dongtai .dbox .right .biaoti{ overflow:hidden; height:46px; background-color:#f5f5f5; padding:0 7px}
+.dongdaibox .dongtai .dbox .right textarea{ width:100%; border:none; padding:15px; height:250px;overflow:hidden; resize:none;}
+.dongdaibox .dongtai .dbox .right button{ position:absolute; right:12px; bottom:12px; width:100px; height:38px; border:none; background-color:#41973c; color:#fff;border-radius:4px; cursor:pointer;}
+.dongdaibox .dongtai .zhengwenbox{ width:100%; overflow:hidden; margin-top:15px; }
+.dongdaibox .dongtai .zhengwenbox .zhengwen{ float:left; width:59%; margin-right:1%; border-radius:4px; border:1px solid #ededed; height:210px; padding:15px;overflow-y:auto; }
+.dongdaibox .dongtai .zhengwenbox .dx_box{ float:left; width:40%;}
+.dongdaibox .dongtai .zhengwenbox .dx_box .dx_00{ overflow:hidden; margin-top:9px; }
+.dongdaibox .dongtai .zhengwenbox .dx_box .dx_00:first-child{ margin-top:0}
+.dongdaibox .dongtai .zhengwenbox .dx_box .dx_00 p{ float:left; width:12%; margin-right:1%; background-color:#eee; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;height:100px; text-align:center; line-height:100px; border-radius:5px;}
+.dongdaibox .dongtai .zhengwenbox .dx_box .dx_00 div{ float:left; width:81%; margin-right:1%; border:1px solid #ededed;height:100px; padding:5px; border-radius:5px;}
+.dongdaibox .dongtai .zhengwenbox .dx_box .dx_00 button{ width:5%; padding: 0 5px; display:block; float:left;min-height:100px; border:none; background-color:#41973c; color:#fff; border-radius:3px; cursor:pointer;}
+
+
+.dongdaibox .dongtai .zhengwenbox .zhengwen h2{background:url(../images/youjiantou.png) no-repeat center left; padding-left:10px; font-weight:bold; color:#333;}
+.dongdaibox .dongtai .zhengwenbox .zhengwen p{ font-size:14px; color:#555; line-height:24px; margin-top:6px;}
+.dongdaibox .dongtai .dbox .right textarea:focus{ background-color:#faf7f0;}
+
+
+
+.dongdaibox .dongtai .dbox .dbox_none{ float:none; width:100%;}
+.dongdaibox .dongtai .dbox .bigbiaoge{ width:100%; margin-top:15px;}
+.dongdaibox .dongtai .dbox .bigbiaoge.deta{ margin-top:0}
+.dongdaibox .dongtai .dbox .bigbiaoge table{border-collapse:collapse;width:100%; border:1px solid #ededed;}
+.dongdaibox .dongtai .dbox .bigbiaoge.zs_biao table{ width:1574px;}
+.dongdaibox .dongtai .dbox .bigbiaoge.zs_biao table tr td div{ min-height:38px}
+.dongdaibox .dongtai .dbox .bigbiaoge table:last-child{ position:relative; top:-1px;}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr{border:1px solid #ededed;}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr.gaoliang{ background-color:#fffdf0}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr.gaoliang td{ color:red;}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr th{border:1px solid #ededed; padding:12px 0; text-align:center; background-color:#f5f5f5; color:#555; cursor:pointer;}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr td{word-break:break-all;}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr .ww1{ width:2%; }
+.dongdaibox .dongtai .dbox .bigbiaoge table tr .ww2{ width:8%;}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr .ww3{ width:5%;}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr .ww4{ width:18%;}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr .ww5{ width:25%;}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr .ww6{ width:6%;}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr .ww7{ width:5%;}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr .ww8{ width:6%; cursor:pointer;}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr .ww9{ width:6%;}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr .ww10{ width:4%;}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr .ww11{ width:10%;}
+
+.dongdaibox .dongtai .dbox .bigbiaoge table tr th b{ color:#ed3e3e}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr td{border:1px solid #ededed; color:#444; text-align:center; color:#555;}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr td b{ color:#41973c}
+/*.dongdaibox .dongtai .dbox .bigbiaoge table tr:hover{ background-color:#41973c;color:#fff;}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr:hover td{ background-color:#41973c; color:#fff;}*/
+
+
+.dongdaibox .dongtai .dbox .bigbiaoge table tr.bg_hui{ background-color:#f5f5f5}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr td div{ border:none; max-width:140px; margin:0 auto; height:100%; background-color:inherit;display:block; padding:10px 0; border-radius:3px; color:#555; }
+.dongdaibox .dongtai .dbox .bigbiaoge table tr td input:focus{ background-color:#faf7f0; border:1px solid #ccc;}
+.dongdaibox .dongtai .dbox .bigbiaoge .fenye{ text-align:center; margin-top:35px; margin-bottom:20px;}
+.dongdaibox .dongtai .dbox .bigbiaoge .fenye dl{ display:inline-block;}
+.dongdaibox .dongtai .dbox .bigbiaoge .fenye dl dd{  border:1px solid #ccc; border-radius:4px; margin:0 2px;}
+.dongdaibox .dongtai .dbox .bigbiaoge .fenye dl dd a{padding:5px 9px; display:block; color:#555;}
+.dongdaibox .dongtai .dbox .bigbiaoge .fenye dl dd a{ color:#555;}
+.dongdaibox .dongtai .dbox .bigbiaoge .fenye dl dd a.on{ background-color:#41973c; color:#fff;}
+
+.dongdaibox .dongtai .dbox .danwei table tr td{ padding:6px 0}
+.dongdaibox .dongtai .dbox .danwei table tr.se_bg{ border:1px solid #eee1d1}
+.dongdaibox .dongtai .dbox .danwei table tr.se_bg td.bai_bg{ background-color:#fcfcfc}
+.dongdaibox .dongtai .dbox .danwei table tr.se_bg td{ background-color:#f6f1eb; border:1px solid #eee1d1;}
+.dongdaibox .dongtai .dbox .danwei table tr.jiagao td{width:70px; padding:10px 4px; height:100px !important;}
+.dongdaibox .dongtai .dbox .danwei table tr.jiagao td>span{ display:block; overflow:hidden;}
+.dongdaibox .dongtai .dbox .danwei table tr.se_bg td input{ display:inline-block; width:16px; height:16px; border:1px solid #eee;}
+
+.dongdaibox .dongtai .dbox .danwei .btnbox{ float:right; margin-top:15px;}
+.dongdaibox .dongtai .dbox .danwei .btnbox .faduanxin{background-color:#41973c;padding:0 10px;height:36px;border-radius:4px; color:#fff; border:none;cursor:pointer;}
+.dongdaibox .dongtai .dbox .danwei .btnbox #chongzhi{background-color:#999999;padding:0 10px; height:36px;border-radius:4px; color:#fff; border:none;cursor:pointer;}
+.dongdaibox .dongtai .dbox .danwei .btnbox #chongzhi.zs{background-color:#41973c;}
+
+.dongdaibox .dongtai .dbox .shic dl{ overflow:hidden; margin-top:10px;}
+.dongdaibox .dongtai .dbox .shic dt{ float:left;}
+.dongdaibox .dongtai .dbox .shic dt b{ color:#555; line-height:36px;}
+.dongdaibox .dongtai .dbox .shic dt b a{ color:#41973c}
+.dongdaibox .dongtai .dbox .shic dd{ float:right;}
+.dongdaibox .dongtai .dbox .shic dd .jingxiaoshang{ height:36px; padding:0 10px; background-color:#41973c;color:#fff; border:none;cursor:pointer;border-radius:4px; }
+.dongdaibox .dongtai .dbox .shic dd .kehu{ height:36px; padding:0 10px; background-color:#41973c;color:#fff; border:none;cursor:pointer;border-radius:4px; }
+
+.dongdaibox .dongtai .dbox .shic .shuru_box{ overflow:hidden;}
+.dongdaibox .dongtai .dbox .shic .shuru_box ul{ float:left;}
+.dongdaibox .dongtai .dbox .shic .shuru_box dl{ float:right; margin-top:0;}
+.dongdaibox .dongtai .dbox .shic .shuru_box ul li input{ width:230px; height:36px; background-color:#f5f5f5; border:1px solid #ededed; border-radius:4px; color:#555; padding-left:6px;}
+.dongdaibox .dongtai .dbox .shic .shuru_box ul li button{ padding:0 12px;background-color:#41973c;height:36px;border-radius:4px; color:#fff; border:none;cursor:pointer;}
+.dongdaibox .dongtai .dbox .shic .shuru_box ul li button.chaxun{background-color:#41973c; }
+.dongdaibox .dongtai .dbox .shic .shuru_box ul li button.chongzhi{background-color:#999999;}
+
+
+
+.dongdaibox .dongtai .dbox .danwei table tr td input{ display:inline-block; width:16px; height:16px; border:1px solid #eee; position: relative;/* top:3px;*/}
+.dongdaibox .dongtai .dbox .danwei table tr th input{ display:inline-block; width:16px; height:16px; border:1px solid #eee;}
+
+.dongdaibox .dongtai .dbox .danwei .btnbox1{ overflow:hidden; float:inherit;}
+.dongdaibox .dongtai .dbox .danwei .btnbox1 .jingxiaoshangjilu{ float:left;}
+.dongdaibox .dongtai .dbox .danwei .btnbox1 .jingxiaoshangjilu dl{ overflow:hidden;}
+.dongdaibox .dongtai .dbox .danwei .btnbox1 .jingxiaoshangjilu dl dt{ float:left; text-align:right; line-height:36px; min-width:120px;}
+.dongdaibox .dongtai .dbox .danwei .btnbox1 .jingxiaoshangjilu dl dd{ float:left;}
+.dongdaibox .dongtai .dbox .danwei .btnbox1 .jingxiaoshangjilu dl dd input{ border-radius:3px; height:36px; border:1px solid #ccc; padding-left:10px; width:320px;}
+.dongdaibox .dongtai .dbox .danwei .btnbox1 .jingxiaoshangjilu dl dd textarea{ border-radius:3px; height:36px; border:1px solid #ccc; padding:10px; width:320px;min-height:120px;}
+.dongdaibox .dongtai .dbox .danwei .btnbox1 .right_bt{ float:right;}
+.dongdaibox .dongtai .dbox .danwei .btnbox1 .jingxiaoshangjilu dl dd.baocun{ padding:0 10px; height:36px;background-color:#41973c;color:#fff; border:none;cursor:pointer;border-radius:4px; line-height:36px;}
+
+.dongdaibox .dongtai .dbox .danwei .btnbox1 .right_bt #zsjx{background-color:#41973c;padding:0 10px; margin-right:15px;height:36px;border-radius:4px; color:#fff; border:none;cursor:pointer;}
+.dongdaibox .dongtai .dbox .danwei .btnbox1 .right_bt #zsgs{background-color:#41973c;padding:0 10px; margin-right:15px;height:36px;border-radius:4px; color:#fff; border:none;cursor:pointer;}
+.dongdaibox .dongtai .dbox .danwei .btnbox1 .right_bt #zskh{background-color:#41973c;padding:0 10px;height:36px;margin-right:15px;border-radius:4px; color:#fff; border:none;cursor:pointer;}
+.dongdaibox .dongtai .dbox .danwei .btnbox1 .right_bt #czjl{background-color:#41973c;padding:0 10px;height:36px;border-radius:4px; color:#fff; border:none;cursor:pointer;}
+
+.dongdaibox .dongtai .dbox .jiben a{ color:#41973c}
+
+.dongdaibox .dongtai .dbox .dangqian{ overflow:hidden;}
+.dongdaibox .dongtai .dbox .dangqian .dangqianbox{ float:left; width:44%;}
+.dongdaibox .dongtai .dbox .dangqian .dangqianbox h2{ font-weight:bold; color:#41973c}
+.dongdaibox .dongtai .dbox .dangqian .dangqianbox .biao{ width:100%; margin-top:15px}
+.dongdaibox .dongtai .dbox .dangqian .dangqianbox .biao table{ width:100%;border-collapse:collapse;width:100%; border:1px solid #ededed;}
+.dongdaibox .dongtai .dbox .dangqian .dangqianbox .biao table tr{  border:1px solid #ededed; text-align:center;}
+.dongdaibox .dongtai .dbox .dangqian .dangqianbox .biao table tr th{  border:1px solid #ededed;}
+.dongdaibox .dongtai .dbox .dangqian .dangqianbox .biao table tr td{  border:1px solid #ededed; padding:4px;color:#555;}
+.dongdaibox .dongtai .dbox .dangqian .dangqianbox .biao table tr td.bg_hui{ background-color:#f5f5f5;}
+.dongdaibox .dongtai .dbox .dangqian .dangqianbox .biao table tr td.mc_ziduan{width:90px;}
+.dongdaibox .dongtai .dbox .dangqian .dangqianbox .biao table tr td input{ width:100%; border-radius:3px; border:1px solid #ccc; border:none; padding:5px; color:#555; text-align:left;}
+.dongdaibox .dongtai .dbox .dangqian .dangqianbox .biao table tr td textarea{ width:100%;  border-radius:3px; border:1px solid #ccc;border:none;overflow:hidden; resize:none; padding:5px; color:#555; overflow-y:auto;}
+.dongdaibox .dongtai .dbox .dangqian .dangqianbox .biao table tr td input:focus{border:1px solid #ccc; }
+.dongdaibox .dongtai .dbox .dangqian .dangqianbox .biao table tr td textarea:focus{border:1px solid #ccc; }
+.dongdaibox .dongtai .dbox .dangqian .dangqianbox .biao table tr td.kehubianhao{ overflow:hidden;}
+.dongdaibox .dongtai .dbox .dangqian .dangqianbox .biao table tr td.kehubianhao button{ margin-left:6px; padding:5px 7px; border:none; background-color:#41973c; color:#fff; border-radius:3px; cursor:pointer;}
+.dongdaibox .dongtai .dbox .dangqian .dangqianbox .biao table tr td.juz{text-align:left;}
+.dongdaibox .dongtai .dbox .dangqian .dangqianbox .biao table tr td div{ padding:5px 0; min-width:200px;}
+
+
+.dongdaibox .dongtai .dbox .dangqian .jiaowangjilb{ float:left; width:54%; margin-left:2%;}
+.dongdaibox .dongtai .dbox .dangqian .jiaowangjilb .tianjaiyitiao{ overflow:hidden;}
+.dongdaibox .dongtai .dbox .dangqian .jiaowangjilb h2{ font-weight:bold; color:#555; float:left; line-height:29px;}
+.dongdaibox .dongtai .dbox .dangqian .jiaowangjilb h3{ float:right; padding:5px 12px; background-color:#41973c; color:#fff; border-radius:3px; cursor:pointer;}
+.dongdaibox .dongtai .dbox .dangqian .jiaowangjilb h2 a{ color:#41973c;}
+.dongdaibox .dongtai .dbox .dangqian .jiaowangjilb .biao{margin-top:5px}
+.dongdaibox .dongtai .dbox .dangqian .jiaowangjilb .biao table{ width:100%;border-collapse:collapse;width:100%; border:1px solid #ededed;}
+.dongdaibox .dongtai .dbox .dangqian .jiaowangjilb .biao table tr{  border:1px solid #ededed; text-align:center;}
+.dongdaibox .dongtai .dbox .dangqian .jiaowangjilb .biao table tr .zhai{ width:130px;}
+.dongdaibox .dongtai .dbox .dangqian .jiaowangjilb .biao table tr th{  border:1px solid #ededed; padding:10px; background-color:#f5f5f5;color:#555;}
+.dongdaibox .dongtai .dbox .dangqian .jiaowangjilb .biao table tr td{  border:1px solid #ededed; padding:10px; color:#555;}
+.dongdaibox .dongtai .dbox .dangqian .jiaowangjilb .biao table tr{ background-color:#fff;}
+.dongdaibox .dongtai .dbox .dangqian .jiaowangjilb .biao table tr:nth-child(2n-1){ background-color:#f5f5f5;}
+.dongdaibox .dongtai .dbox .dangqian .jiaowangjilb .biao table tr td a{ color:#41973c;}
+
+.dongdaibox .dongtai .dbox .dangqian .jiaowangjilb .biao .fenye{ text-align:center; margin-top:35px; margin-bottom:20px;}
+.dongdaibox .dongtai .dbox .dangqian .jiaowangjilb .biao .fenye dl{ display:inline-block;}
+.dongdaibox .dongtai .dbox .dangqian .jiaowangjilb .biao .fenye dl dd{  border:1px solid #ccc; border-radius:4px; margin:0 2px;}
+.dongdaibox .dongtai .dbox .dangqian .jiaowangjilb .biao .fenye dl dd a{padding:5px 9px; display:block; color:#555;}
+.dongdaibox .dongtai .dbox .dangqian .jiaowangjilb .biao .fenye dl dd a{ color:#555;}
+.dongdaibox .dongtai .dbox .dangqian .jiaowangjilb .biao .fenye dl dd a.on{ background-color:#41973c; color:#fff;}
+
+.dongdaibox .dongtai .dbox .danwei.jxs{ margin-top:0;}
+.dongdaibox .dongtai .dbox .danwei.jxs tr td{ /*padding:3px 10px*/}
+.dongdaibox .dongtai .dbox .danwei.jxs tr td div{ border:1px solid #ddd; padding:6px 0}
+.dongdaibox .dongtai .dbox .danwei.jxs tr.bg_hui td input{ background: #f5f5f5}
+.dongdaibox .dongtai .dbox .danwei.jxs tr td input{ width:100%; height:100%; padding:1px; display:block; border:none}
+.dongdaibox .dongtai .dbox .danwei.jxs tr.jiagao td{padding:3px;min-height:100px; }
+.dongdaibox .dongtai .dbox .danwei.jxs tr.jiagao td div{ font-size:13px; display:block; padding:0;max-width:60px;max-height:53px; line-height:18px; border:none; overflow:hidden;resize:none;background:inherit}
+
+.dongdaibox .dongtai .dbox .danwei.jxs{max-width: 1574px; overflow-x: auto; overflow: auto}
+.dongdaibox .dongtai .dbox .danwei.jxs .over_flow{ max-height:259px; overflow-y:auto; overflow-x: hidden;}
+.dongdaibox .dongtai .dbox .danwei.jxs>div table{ }
+.dongdaibox .dongtai .dbox .danwei.jxs>div table tr th{word-break: break-all;/*必须*/; display:block; float:left; margin-right: -1px; min-height: 44px; margin-top: -1px}
+.dongdaibox .dongtai .dbox .danwei.jxs>div table tr td{word-break: break-all;/*必须*/; display:block; float:left; margin-right: -1px;height: 26px; margin-top: -1px}
+.dongdaibox .dongtai .dbox .danwei.jxs>div table tr .w1{ width:79px;}
+.dongdaibox .dongtai .dbox .danwei.jxs>div table tr .w2{ width:220px;}
+.dongdaibox .dongtai .dbox .danwei.jxs>div table tr .w3{ width:79px;}
+.dongdaibox .dongtai .dbox .danwei.jxs>div table tr .w4{ width:79px;}
+.dongdaibox .dongtai .dbox .danwei.jxs>div table tr .w5{ width:79px;cursor:pointer; font-weight:bold;}
+.dongdaibox .dongtai .dbox .danwei.jxs>div table tr .w6{ width:79px;cursor:pointer; font-weight:bold;}
+.dongdaibox .dongtai .dbox .danwei.jxs>div table tr .w7{ width:108px;}
+.dongdaibox .dongtai .dbox .danwei.jxs>div table tr .w8{ width:60px;cursor:pointer;}
+.dongdaibox .dongtai .dbox .danwei.jxs table tr{ border: none !important;}
+.dongdaibox .dongtai .dbox .danwei.jxs table tr th{ border-bottom: none !important;}
+
+.dongdaibox .dongtai .dbox .bigbiaoge.birth{ max-width: 1574px; overflow-x: auto; overflow: auto}
+.dongdaibox .dongtai .dbox .danwei.dwsc_box .over_flow{max-height:246px; overflow-y:auto;overflow-x: hidden}
+.dongdaibox .dongtai .dbox .danwei.dwsc_box>div.nangao{}
+.dongdaibox .dongtai .dbox .danwei.dwsc_box>div table{}
+.dongdaibox .dongtai .dbox .danwei.dwsc_box>div table tr th{word-break: break-all;/*必须*/; display:block; float:left; margin-right: -1px; min-height: 44px;/* margin-top: -1px*/}
+.dongdaibox .dongtai .dbox .danwei.dwsc_box>div table tr td{word-break: break-all;/*必须*/; display:block; float:left;margin-right: -1px;height: 26px; margin-top: -1px}
+.dongdaibox .dongtai .dbox .danwei.dwsc_box>div table tr .w_01{width:79px;}
+.dongdaibox .dongtai .dbox .danwei.dwsc_box>div table tr .w_02{width:220px;}
+.dongdaibox .dongtai .dbox .danwei.dwsc_box>div table tr .w_03{width:79px;}
+.dongdaibox .dongtai .dbox .danwei.dwsc_box>div table tr .w_04{width:79px;}
+.dongdaibox .dongtai .dbox .danwei.dwsc_box>div table tr .w_05{width:79px;}
+.dongdaibox .dongtai .dbox .danwei.dwsc_box>div table tr .w_06{width:79px;}
+.dongdaibox .dongtai .dbox .danwei.dwsc_box>div table tr .w_07{width:111px;}
+.dongdaibox .dongtai .dbox .danwei.dwsc_box>div table tr .w_08{width:60px;}
+.dongdaibox .dongtai .dbox .danwei.dwsc_box>div table tr td span{ font-size:13px;}
+.dongdaibox .dongtai .dbox .danwei.dwsc_box .btnbox{ margin-right:33px !important;}
+
+.dongdaibox .dongtai .dbox .bigbiaoge.birth table tr{ border: none !important;}
+.dongdaibox .dongtai .dbox .bigbiaoge.birth table tr th{ border-bottom: none !important;}
+
+.dongdaibox .dongtai .dbox .danwei.deta td{ padding:0;}
+.dongdaibox .dongtai .dbox .danwei.deta td div{ padding:10px 0; max-width:100px; margin: 0 auto}
+
+
+
+.active1{ background-color:#f7fbff !important; color:#666 !important;}
+.active1 td{  color:#666 !important;}
+
+.dongdaibox .biaoti.jingxiao_box{ overflow:visible !important;}
+.dongdaibox .biaoti.jingxiao_box>h5{position:absolute; right:120px; top:6px; z-index:111}
+.dongdaibox .biaoti.jingxiao_box>h5 input{  padding:6px 10px; min-width:266px; border-radius:3px; border:1px solid #ccc;}
+.dongdaibox .biaoti.jingxiao_box>h5 .shengshiqu{ position:absolute; width:100%; left:0; top:33px; background-color:#fff; padding:5px; border:1px solid #ddd;z-index:11; display:none; max-height:222px; overflow-y:auto !important}
+.dongdaibox .biaoti.jingxiao_box>h5 .shengshiqu p{ padding:5px; width:100%; cursor:pointer;}
+.dongdaibox .biaoti.jingxiao_box>h5 .shengshiqu p:hover{ background-color:#eee;}
+
+.dongdaibox .biaoti.bt_box{overflow:visible !important;}
+.dongdaibox .biaoti.bt_box>h5{position:absolute; right:10px; top:6px;}
+.dongdaibox .biaoti.bt_box>h5 input{  padding:6px 10px; min-width:266px; border-radius:3px; border:1px solid #ccc;}
+.dongdaibox .biaoti.bt_box>h5 .shengshiqu{ position:absolute; width:100%; left:0; top:33px; background-color:#fff; padding:5px; border:1px solid #ddd;z-index:11; display:none; max-height:222px; overflow-y:auto !important}
+.dongdaibox .biaoti.bt_box>h5 .shengshiqu p{ padding:5px; width:100%; cursor:pointer;}
+.dongdaibox .biaoti.bt_box>h5 .shengshiqu p:hover{ background-color:#eee;}
+
+
+.dongdaibox .dongtai .dbox .danwei.dange .over_flow_01{max-height:410px; overflow-y:auto;}
+.dongdaibox .dongtai .dbox .danwei.dange table{width:1574px;}
+.dongdaibox .dongtai .dbox .danwei.dange>div table tr .wh_01{width:5%;}
+.dongdaibox .dongtai .dbox .danwei.dange>div table tr .wh_02{width:18%;}
+.dongdaibox .dongtai .dbox .danwei.dange>div table tr .wh_03{width:4%;}
+.dongdaibox .dongtai .dbox .danwei.dange>div table tr .wh_04{width:5%;}
+.dongdaibox .dongtai .dbox .danwei.dange>div table tr .wh_05{width:5%;}
+.dongdaibox .dongtai .dbox .danwei.dange>div table tr .wh_06{width:5%;}
+.dongdaibox .dongtai .dbox .danwei.dange>div table tr .wh_07{width:5%;}
+.dongdaibox .dongtai .dbox .danwei.dange>div table tr .wh_08{width:5%;}
+.dongdaibox .dongtai .dbox .danwei.dange>div table tr .wh_09{width:3%;}
+.dongdaibox .dongtai .dbox .danwei.dange>div table tr .wh_10{width:5%;}
+.dongdaibox .dongtai .dbox .danwei.dange>div table tr .wh_11{width:5%;}
+.dongdaibox .dongtai .dbox .danwei.dange>div table tr .wh_12{width:4%;}
+.dongdaibox .dongtai .dbox .danwei.dange>div table tr .wh_13{width:5%;}
+.dongdaibox .dongtai .dbox .danwei.dange>div table tr .wh_14{width:6%;}
+.dongdaibox .dongtai .dbox .danwei.dange>div table tr .wh_15{width:16%;}
+.dongdaibox .dongtai .dbox .danwei.dange>div table tr .wh_16{width:4%;}
+
+.dongdaibox .dongtai .dbox .danwei.deta .over_flow_02{max-height:230px; overflow-y:auto;}
+.dongdaibox .dongtai .dbox .danwei.deta table{width:1574px;}
+.dongdaibox .dongtai .dbox .danwei.deta>div table tr .wh_01{width:5%;}
+.dongdaibox .dongtai .dbox .danwei.deta>div table tr .wh_02{width:18%;}
+.dongdaibox .dongtai .dbox .danwei.deta>div table tr .wh_03{width:4%;}
+.dongdaibox .dongtai .dbox .danwei.deta>div table tr .wh_04{width:5%;}
+.dongdaibox .dongtai .dbox .danwei.deta>div table tr .wh_05{width:5%;}
+.dongdaibox .dongtai .dbox .danwei.deta>div table tr .wh_06{width:5%;}
+.dongdaibox .dongtai .dbox .danwei.deta>div table tr .wh_07{width:5%;}
+.dongdaibox .dongtai .dbox .danwei.deta>div table tr .wh_08{width:5%;}
+.dongdaibox .dongtai .dbox .danwei.deta>div table tr .wh_09{width:3%;}
+.dongdaibox .dongtai .dbox .danwei.deta>div table tr .wh_10{width:5%;}
+.dongdaibox .dongtai .dbox .danwei.deta>div table tr .wh_11{width:5%;}
+.dongdaibox .dongtai .dbox .danwei.deta>div table tr .wh_12{width:4%;}
+.dongdaibox .dongtai .dbox .danwei.deta>div table tr .wh_13{width:7%;}
+.dongdaibox .dongtai .dbox .danwei.deta>div table tr .wh_14{width:8%;}
+.dongdaibox .dongtai .dbox .danwei.deta>div table tr .wh_15{width:16%;}
+
+
+.popup{ position:fixed; background-color:#fff; z-index:101; left:50%; margin-left:-211px; width:422px; top:50%; margin-top:-298px;}
+.popup >h2{ overflow: hidden;height: 54px; background-color: #41973c;padding: 0 15px;}
+.popup >h2 span{float: left;background: url(../images/baisanjiao.png) no-repeat left center;padding-left: 15px;color: #fff;line-height: 54px;}
+.popup >h2 i{ float:right; line-height:54px; cursor:pointer; color:#fff; font-size:24px;}
+.popup dl{ padding:20px;}
+.popup dl dd input{ display:block; width:100%; background-color:#f5f5f5; border:0px; margin-bottom:15px; height:48px; line-height:48px; padding:0 10px; font-size:16px; color:#333333;}
+.popup dl dd select{display:block; width:100%; background-color:#f5f5f5; border:0px; margin-bottom:15px; height:48px; line-height:48px; padding:0 10px; font-size:16px; color:#333333;}
+.popup dl dd textarea{display:block; resize:none; width:100%; background-color:#f5f5f5; border:0px; margin-bottom:15px;padding:10px; font-size:16px; color:#333333;min-height:252px;}
+.popup.po01 dl dd textarea{min-height:356px;}
+.popup dl dd label{ display:block; margin-bottom:20px;}
+.popup dl dd label span{ padding-right:30px; color:#666; font-size:16px; background-image:url(../images/weixuanzhong.png); background-repeat:no-repeat; background-position:right center;}
+.popup dl dd label span.on{ background-image:url(../images/xuanzhong.png); }
+.popup dl dd label input{ display:none;}
+.popup .submit input{ display:block; background-color:#41973c; border:0px; height:54px; line-height:54px; color:#fff; font-size:14px;cursor:pointer;}
+.popup01{ display:none;}
+.popup02{ display:none;}
+.popup03{ display:none;}
+.popup002{ display:none;}
+.popup02 dl{ height:480px; overflow-y:auto;}
+.popup02.poo02 dl{ height:376px;}
+.popup03 dl{ height:376px; overflow-y:auto;}
+.popup002 dl{ height:480px; overflow-y:auto;}
+.po02 dl dd.on_bd{ overflow:hidden;}
+.po02 dl dd.on_bd input{ width:49%; float:left; display:block; margin-right:2%;}
+.po02 dl dd.on_bd input:last-child{ margin-right:0%}
+.popup004{ display:none;}
+.popup004 dl{ height:480px; overflow-y:auto;}
+
+
+
+
+
+
+

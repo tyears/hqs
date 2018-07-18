@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cccuu.project.mapper.frontcore.UserMapper" >
+	<select id="queryListByParams" resultType="java.util.Map" parameterType="java.util.Map">
+		SELECT u.*,d.depart_name FROM t_user u LEFT JOIN t_depart d ON u.depart_id=d.id
+    <where>
+    	<if test="1==1">
+    		1=1
+    	</if>
+    	<if test="userName != null" >
+			and u.user_name like CONCAT('%',CONCAT(#{userName,jdbcType=VARCHAR},'%'))
+	    </if>
+      	<if test="name != null" >
+	        and u.name like CONCAT('%',CONCAT(#{name,jdbcType=VARCHAR},'%'))
+      	</if>
+      	<if test="userType != null" >
+	        and u.user_type = #{userType,jdbcType=VARCHAR}
+      	</if>
+		<if test="departId != null" >
+			and u.depart_id = #{departId,jdbcType=VARCHAR}
+		</if>
+		<if test="state != null" >
+			and u.state = #{state,jdbcType=VARCHAR}
+		</if>
+      	<if test="beginTime != null" >
+	        and u.create_time &gt;= #{beginTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endTime != null" >
+	        and u.create_time  &lt;= #{endTime,jdbcType=TIMESTAMP}
+      	</if>
+    </where>
+    order by u.create_time desc
+  </select>
+
+	<select id="checkExtensionNum" resultType="java.lang.Integer">
+		SELECT COUNT(id) FROM t_user
+		<where>
+			<if test="1==1">
+				1=1
+			</if>
+			<if test="extensionNum != null" >
+				and extension_num = #{extensionNum,jdbcType=VARCHAR}
+			</if>
+			<if test="userId != null" >
+				and id != #{userId,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+</mapper>

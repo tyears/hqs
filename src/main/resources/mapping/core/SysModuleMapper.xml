@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cccuu.project.mapper.core.SysModuleMapper" >
+    <select id="queryByFkIdArry" resultType="java.util.Map">
+        select * from sys_module
+        <where>
+            fk_id in
+            <foreach collection="fkIdArry" item="fkid" open="(" close=")" separator=",">
+                #{fkid}
+            </foreach>
+        </where>
+        order by sort asc
+    </select>
+    <select id="queryTopModuleByUserId" parameterType="java.lang.String" resultType="java.util.Map">
+        select * from sys_module
+        <where>
+            id IN(SELECT rm.module_id FROM sys_role_module rm WHERE rm.role_id IN(SELECT ur.role_id FROM sys_user_role ur WHERE ur.user_id=#{userId})) AND fk_id='0'
+        </where>
+        order by sort asc
+    </select>
+    <select id="queryModulesByUserIdPrevModuleIdArry" resultType="java.util.Map">
+        select * from sys_module
+        <where>
+            id IN(SELECT rm.module_id FROM sys_role_module rm WHERE rm.role_id IN(SELECT ur.role_id FROM sys_user_role ur WHERE ur.user_id=#{userId}))
+            AND fk_id in
+            <foreach collection="prevModuleIdArry" item="fkid" open="(" close=")" separator=",">
+                #{fkid}
+            </foreach>
+        </where>
+        order by sort asc
+    </select>
+</mapper>

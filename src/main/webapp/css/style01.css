@@ -1,0 +1,70 @@
+.popup{ position:fixed; background-color:#fff; z-index:101; left:50%; margin-left:-211px; width:510px; top:40%; margin-top:-298px;}
+.popup >h2{ overflow: hidden;height: 54px; background-color: #41973c;padding: 0 15px;}
+.popup >h2 span{float: left;background: url(../images/baisanjiao.png) no-repeat left center;padding-left: 15px;color: #fff;line-height: 54px;}
+.popup >h2 i{ float:right; line-height:54px; cursor:pointer; color:#fff; font-size:24px;}
+.popup dl{ padding:20px;}
+.popup dl dd input{ display:block; width:100%; background-color:#f5f5f5; border:0px; margin-bottom:15px; height:48px; line-height:48px; padding:0 10px; font-size:16px; color:#333333;}
+.popup dl dd select{display:block; width:100%; background-color:#f5f5f5; border:0px; margin-bottom:15px; height:48px; line-height:48px; padding:0 10px; font-size:16px; color:#333333;}
+.popup dl dd textarea{display:block; resize:none; width:100%; background-color:#f5f5f5; border:0px; margin-bottom:15px;padding:10px; font-size:16px; color:#333333;min-height:252px;}
+.popup.po01 dl dd textarea{min-height:356px;}
+.popup dl dd label{ display:block; margin-bottom:20px;}
+.popup dl dd label span{ padding-right:30px; color:#666; font-size:16px; background-image:url(../images/weixuanzhong.png); background-repeat:no-repeat; background-position:right center;}
+.popup dl dd label span.on{ background-image:url(../images/xuanzhong.png); }
+.popup dl dd label input{ display:none;}
+.popup .submit input{ display:block; background-color:#41973c; border:0px; height:54px; line-height:54px; color:#fff; font-size:14px;cursor:pointer;}
+.popup01{ display:none;}
+.popup02{ display:none;}
+.popup03{ display:none;}
+.popup002{ display:none;}
+.popup02 dl{ height:480px; overflow-y:auto;}
+.popup03 dl{ height:376px; overflow-y:auto;}
+.popup002 dl{ height:535px; overflow-y:auto;}
+.po02 dl dd.on_bd{ overflow:hidden;}
+.po02 dl dd.on_bd input{ width:49%; float:left; display:block; margin-right:2%;}
+.po02 dl dd.on_bd input:last-child{ margin-right:0%}
+
+.popup003{ display:none;}
+.popup003 dl{ max-height:436px; overflow-y:auto}
+
+.dongdaibox .dongtai .dbox .left dl dd input.upload_btn{background-color:#41973c; color:#fff; cursor:pointer; border-color:#41973c; width:100px;}
+.dongdaibox .dongtai .dbox .left dl dd span{ height:36px; line-height:36px; color:#666; padding:0 15px; border-radius:4px 0 0 4px; float:left; background-color:#e5e5e5; border:1px solid #e5e5e5;}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr td{ padding:5px; max-width:200px;}
+.dongdaibox .dongtai .dbox .bigbiaoge.jsbjy table tr td{ padding:10px 5px;}
+.dongdaibox .dongtai .dbox .bigbiaoge.zssh table tr td div{ width:100%; max-width:none; border:1px solid #ddd; padding:5px;}
+.dongdaibox .dongtai .dbox .bigbiaoge.kd table tr td div{ width:100%; max-width:none; border:1px solid #ddd; padding:5px; color:red;}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr:nth-child(2n-1){ background-color:#f5f5f5;}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr .del_btn{ cursor:pointer; text-decoration:underline;}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr .del_btn:hover{ color:#f00;}
+.dongdaibox .dongtai .dbox .left dl dd p{ float:right; margin-top:10px; color:#666;}
+.dongdaibox .dongtai .dbox .left dl dd p a{ margin-left:15px;}
+.dongdaibox .dongtai .dbox .left dl dd p i{ margin:0 5px; color:#f00;}
+.dongdaibox .dongtai .dbox .left dl dd form{ overflow:hidden;}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr td .checkbox_input{ border:1px solid #f5f5f5; width:14px; height:14px; margin:0 auto; display:block;}
+.dongdaibox .dongtai .dbox .bigbiaoge table tr td .shenhe{ border:none; background-color:#41973c; color:#fff; padding:3px 5px; border-radius:3px; margin:0 2px; cursor:pointer;}
+.caozuo_box{ overflow:hidden; margin-top:15px;}
+.caozuo_box input{ float:right; cursor:pointer; border:0px; background-color:#41973c; color:#fff; border-radius:4px; height:34px; margin-left:8px; padding:0 12px;}
+.caozuo_box input:hover{ background-color:#e27c2a;}
+.info_text{ width:800px; margin:0 auto; margin-top:15px; overflow:hidden;}
+.info_text b{ color:#666; display:block; margin-bottom:5px;}
+.info_text textarea{ display:block; width:100%; padding:5px 10px; color:#333; border:1px solid #ccc; }
+.info_text input{ float:right; margin-top:10px; border:0px; cursor:pointer; padding:0 15px; border-radius:4px; height:34px; background-color:#41973c; color:#fff;}
+
+.submit{ width:100%;}
+
+.zssm{ color:#444;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

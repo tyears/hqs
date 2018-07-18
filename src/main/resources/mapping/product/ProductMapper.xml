@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cccuu.project.mapper.product.ProductMapper" >
+	<select id="queryListByParams" resultType="java.util.Map">
+  	select p.*,t.id,t.name as typeName from t_product p LEFT JOIN t_product_type t ON p.type_id=t.id
+    <where>
+        <if test="1==1">
+            1=1
+        </if>
+        AND p.reserved1='0'
+        <if test="typeId != null" >
+            and p.type_id =  #{typeId,jdbcType=VARCHAR}
+        </if>
+        <if test="name != null" >
+            and p.product_name like CONCAT('%',CONCAT(#{name,jdbcType=VARCHAR},'%'))
+        </if>
+        <if test="productName != null" >
+            and p.product_name like CONCAT('%',CONCAT(#{productName,jdbcType=VARCHAR},'%'))
+        </if>
+        <if test="jianpin != null" >
+            and p.jianpin like CONCAT('%',CONCAT(#{jianpin,jdbcType=VARCHAR},'%'))
+        </if>
+        <if test="productNum != null" >
+            and p.product_num like CONCAT('%',CONCAT(#{productNum,jdbcType=VARCHAR},'%'))
+        </if>
+    </where>
+        <if test="jiage != null" >
+            order by SUBSTRING(p.product_num,2) asc
+        </if>
+        <if test="jiage == null" >
+            order by p.sort asc
+        </if>
+    </select>
+
+    <select id="queryListByParamsSys" resultType="java.util.Map">
+        select p.*,t.id,t.name as typeName from t_product p LEFT JOIN t_product_type t ON p.type_id=t.id
+        <where>
+            <if test="1==1">
+                1=1
+            </if>
+            <if test="typeId != null" >
+                and p.type_id =  #{typeId,jdbcType=VARCHAR}
+            </if>
+            <if test="name != null" >
+                and p.product_name like CONCAT('%',CONCAT(#{name,jdbcType=VARCHAR},'%'))
+            </if>
+            <if test="productName != null" >
+                and p.product_name like CONCAT('%',CONCAT(#{productName,jdbcType=VARCHAR},'%'))
+            </if>
+            <if test="jianpin != null" >
+                and p.jianpin like CONCAT('%',CONCAT(#{jianpin,jdbcType=VARCHAR},'%'))
+            </if>
+            <if test="productNum != null" >
+                and p.product_num like CONCAT('%',CONCAT(#{productNum,jdbcType=VARCHAR},'%'))
+            </if>
+        </where>
+            order by  p.reserved1 asc,p.sort asc
+    </select>
+
+    <select id="queryListByFoodId" resultType="java.util.Map" parameterType="java.lang.String">
+        SELECT p.*,pf.id AS productFoodId,pf.food_id,pf.sort as productFoodSort FROM t_product p
+        LEFT JOIN t_product_food pf ON p.id=pf.product_id
+        WHERE pf.food_id=#{foodId,jdbcType=VARCHAR} AND p.reserved1='0' ORDER BY IFNULL(pf.sort,0) ASC
+    </select>
+    <select id="queryListByKeyWord" resultType="java.util.Map" parameterType="java.lang.String">
+        SELECT p.* FROM t_product p WHERE
+        (
+        p.product_name like CONCAT('%',CONCAT(#{keyWord,jdbcType=VARCHAR},'%'))
+        or p.jianpin like CONCAT('%',CONCAT(#{keyWord,jdbcType=VARCHAR},'%'))
+        or p.product_num like CONCAT('%',CONCAT(#{keyWord,jdbcType=VARCHAR},'%'))
+        )
+        AND p.reserved1='0'
+        ORDER BY p.sort ASC
+    </select>
+    <select id="queryProductByDealerId" resultType="java.util.Map" parameterType="java.lang.String">
+        SELECT p.product_name as productName,p.product_num as productNum,dp.*  FROM t_dealer_product dp LEFT JOIN t_product p ON dp.product_id=p.id
+
+        WHERE dp.dealer_id=#{dealerId,jdbcType=VARCHAR} AND p.reserved1='0'
+
+        ORDER BY p.sort ASC
+    </select>
+
+    <select id="isProductNum" resultType="map" parameterType="com.cccuu.project.model.product.Product">
+        SELECT id from t_product where product_num = #{productNum} AND reserved1='0'
+        <if test="id != null">
+            and id != #{id}
+        </if>
+    </select>
+
+    <insert id="addMulti" parameterType="java.util.List">
+        insert into t_product (id, type_id, product_num,product_name, spec, num_box, retail_price_bag, retail_price_box, sell_price_bag, sell_price_box, remark, sort, create_time,reserved1,reserved2,reserved3)
+        values
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.id},#{item.typeId},#{item.productNum},#{item.productName},#{item.spec},#{item.numBox},#{item.retailPriceBag},#{item.retailPriceBox},#{item.sellPriceBag},#{item.sellPriceBox},#{item.remark},#{item.sort},#{item.createTime},#{item.reserved1},#{item.reserved2},#{item.reserved3})
+        </foreach>
+    </insert>
+
+    <select id="queryProductByNum" resultType="java.util.Map">
+        select * from t_product
+        <where>
+            <if test="1==1">
+                1=1
+            </if>
+            AND reserved1='0'
+            <if test="productNum != null" >
+                and product_num like CONCAT('%',CONCAT(#{productNum,jdbcType=VARCHAR},'%'))
+            </if>
+        </where>
+        order by product_num asc
+    </select>
+</mapper>

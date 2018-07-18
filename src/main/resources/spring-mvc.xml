@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/aop  http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- 默认的注解映射的支持 -->
+	<mvc:annotation-driven/>
+	<!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 ,注意此项目要排除springmvc再次扫描service-->
+	<context:component-scan base-package="com.cccuu.project.controller,com.cccuu.project.app" use-default-filters="true">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<!-- <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />   -->
+	</context:component-scan>
+	
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<mvc:resources mapping="/images/**" location="/images/" />
+	<mvc:resources mapping="/js/**" location="/js/" />
+	<mvc:resources mapping="/css/**" location="/css/" />
+	<mvc:resources mapping="/static/**" location="/static/" />
+
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
+	
+	<bean id="mappingJacksonHttpMessageConverter"  
+        class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">  
+        <property name="supportedMediaTypes">  
+            <list>  
+                <value>text/html;charset=UTF-8</value>  
+            </list>  
+        </property>
+        <property name="objectMapper">
+			<bean class="com.fasterxml.jackson.databind.ObjectMapper">  
+                 <property name="dateFormat">  
+                     <bean class="java.text.SimpleDateFormat">  
+                         <constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss" />  
+                     </bean>  
+                 </property>  
+             </bean>  
+		</property>
+    </bean>
+	 
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+	    <property name="cacheSeconds" value="0" />
+	    <property name="messageConverters">
+	    	<list>
+	    		<ref bean="mappingJacksonHttpMessageConverter"/>
+	    	</list>
+	    </property>
+	</bean>
+	
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<!-- SpringMVC上传文件时，需要配置MultipartResolver处理器 --> 
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 
+        <!-- 指定所上传文件的总大小不能超过4MB。注意maxUploadSize属性的限制不是针对单个文件，而是所有文件的容量之和 --> 
+        <property name="maxUploadSize" value="40000000"/> 
+    </bean> 
+     
+    <!-- SpringMVC在超出上传文件限制时，会抛出org.springframework.web.multipart.MaxUploadSizeExceededException --> 
+    <!-- 该异常是SpringMVC在检查上传的文件信息时抛出来的，而且此时还没有进入到Controller方法中 --> 
+    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+    	<!-- 定义默认的异常处理页面，当该异常类型未注册时使用 -->  
+    	<property name="defaultErrorView" value="error"></property>  
+    	<!-- 定义异常处理页面用来获取异常信息的变量名，默认名为exception -->  
+    	<property name="exceptionAttribute" value="Exception"></property>
+        <!-- <property name="exceptionMappings"> 
+            <props> 
+                遇到MaxUploadSizeExceededException异常时，自动跳转到/WEB-INF/jsp/error_fileupload.jsp页面 
+                <prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">errors/upload_error</prop> 
+            </props> 
+        </property>  -->
+    </bean>
+    <!--通知spring使用cglib而不是jdk的来生成代理方法 AOP可以拦截到Controller-->  
+	<aop:aspectj-autoproxy proxy-target-class="true" />  
+</beans>

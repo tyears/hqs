@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cccuu.project.mapper.give.GiveMapper" >
+    <select id="queryListByParams" resultType="java.util.Map" parameterType="java.util.Map">
+        SELECT t.*,ta.area_name,d.dealer_num,d.company_name,d.register_tel,d.district_name,d.name as dname,d.delivery_address,d.dealer_type AS ddealer_type,
+        d.overall_merit,d.cooperation_state,d.id AS did
+        ,o.name,o.tel,o.address,o.product_names,o.order_num,o.dealer_type,o.transfer_man_name,o.id AS oid
+        FROM t_give t
+        LEFT JOIN t_dealer d ON d.id=t.dealer_id
+        LEFT JOIN t_area ta ON ta.id=d.district_id
+        LEFT JOIN t_order o ON o.id=t.order_id
+        <where>
+            <if test="1==1">
+                1=1
+            </if>
+            <if test="giveId != null" >
+                and t.id =  #{giveId,jdbcType=VARCHAR}
+            </if>
+            <if test="giveState != null" >
+                and t.state =  #{giveState,jdbcType=VARCHAR}
+            </if>
+            <if test="numKd != null" >
+                and (t.goods_num = '' OR t.goods_num IS NULL )
+            </if>
+            <if test="giveType != null" >
+                and t.give_type =  #{giveType,jdbcType=VARCHAR}
+            </if>
+            <if test="areaId != null" >
+                and d.district_id =  #{areaId,jdbcType=VARCHAR}
+            </if>
+            <if test="dealerTel != null" >
+                <if test="iszengsongjilu != null">  <!-- 赠送记录用 -->
+                    and (o.tel like CONCAT('%',CONCAT(#{dealerTel,jdbcType=VARCHAR},'%')) or d.register_tel like CONCAT('%',CONCAT(#{dealerTel,jdbcType=VARCHAR},'%')) )
+                </if>
+                <if test="iszengsongjilu == null">  <!-- 平常查询 -->
+                    and o.tel like CONCAT('%',CONCAT(#{dealerTel,jdbcType=VARCHAR},'%'))
+                </if>
+
+            </if>
+            <if test="dealerName != null" >
+                <if test="iszengsongjilu != null">  <!-- 赠送记录用 -->
+                    and (o.name like CONCAT('%',CONCAT(#{dealerName,jdbcType=VARCHAR},'%')) or d.name like CONCAT('%',CONCAT(#{dealerName,jdbcType=VARCHAR},'%')) )
+                </if>
+                <if test="iszengsongjilu == null">  <!-- 平常查询 -->
+                    and o.name like CONCAT('%',CONCAT(#{dealerName,jdbcType=VARCHAR},'%'))
+                </if>
+
+            </if>
+            <if test="dealerAddress != null" >
+                <if test="iszengsongjilu != null">  <!-- 赠送记录用 -->
+                    and (o.address like CONCAT('%',CONCAT(#{dealerAddress,jdbcType=VARCHAR},'%')) or d.delivery_address like CONCAT('%',CONCAT(#{dealerAddress,jdbcType=VARCHAR},'%')) )
+                </if>
+                <if test="iszengsongjilu == null">  <!-- 平常查询 -->
+                    and o.address like CONCAT('%',CONCAT(#{dealerAddress,jdbcType=VARCHAR},'%'))
+                </if>
+            </if>
+            <if test="giveContent != null" >
+                and t.give_content like CONCAT('%',CONCAT(#{giveContent,jdbcType=VARCHAR},'%'))
+            </if>
+            <if test="districtName != null" >
+                and d.district_name like CONCAT('%',CONCAT(#{districtName,jdbcType=VARCHAR},'%'))
+            </if>
+            <if test="registerTel != null" >
+                and d.register_tel =  #{registerTel,jdbcType=VARCHAR}
+            </if>
+            <if test="productNames != null" >
+                and o.product_names like CONCAT('%',CONCAT(#{productNames,jdbcType=VARCHAR},'%'))
+            </if>
+            <if test="transferManName != null" >
+                and o.transfer_man_name like CONCAT('%',CONCAT(#{transferManName,jdbcType=VARCHAR},'%'))
+            </if>
+            <if test="createTimeStart != null">
+                and date_format(t.create_time,'%Y-%m-%d') &gt;=  #{createTimeStart,jdbcType=VARCHAR}
+            </if>
+            <if test="createTimeEnd != null">
+                and date_format(t.create_time,'%Y-%m-%d') &lt;=  #{createTimeEnd,jdbcType=VARCHAR}
+            </if>
+            <if test="dealerType != null" >
+                and d.dealer_type =  #{dealerType,jdbcType=VARCHAR}
+            </if>
+            <if test="keyTel != null" >
+                and ((d.register_tel =  #{keyTel,jdbcType=VARCHAR} AND t.give_type = '1') OR (o.tel = #{keyTel,jdbcType=VARCHAR} AND t.give_type != '1'))
+            </if>
+            <if test="giveTypeKD != null" >
+                <if test="giveTypeKD == 1" >
+                    and t.give_type = '1'
+                </if>
+                <if test="giveTypeKD != 1" >
+                    and t.give_type != '1'
+                </if>
+            </if>
+            <if test="areaIdZS != null" >
+                and (o.area_id =  #{areaIdZS,jdbcType=VARCHAR} OR d.district_id =  #{areaIdZS,jdbcType=VARCHAR})
+            </if>
+            <if test="reserved1 != null" >
+                and t.reserved1 = #{reserved1,jdbcType=VARCHAR}
+            </if>
+        </where>
+        order by t.create_time DESC
+    </select>
+
+    <select id="queryByParams" resultType="java.util.Map" parameterType="java.util.Map">
+        SELECT t.id,t.goods_num AS goodsNum FROM t_give t
+        <where>
+            <if test="1==1">
+                1=1
+            </if>
+            <if test="giveTypeKD != null" >
+                <if test="giveTypeKD == 1" >
+                    and t.give_type = '1'
+                </if>
+                <if test="giveTypeKD != 1" >
+                    and t.give_type != '1'
+                </if>
+            </if>
+                and t.only_num =  #{onlyNum,jdbcType=VARCHAR}
+        </where>
+    </select>
+
+    <update id="updateBeizhu">
+        UPDATE t_give set remark = #{text} where id = #{id}
+    </update>
+
+
+    <update id="updateNameOrder">
+        UPDATE t_order set name = #{text} where id = #{id}
+    </update>
+
+    <update id="updateAddressOrder">
+        UPDATE t_order set address = #{text} where id = #{id}
+    </update>
+
+    <update id="updateNameDealer">
+        UPDATE t_dealer set name = #{text} where id = #{id}
+    </update>
+
+    <update id="updateAddressDealer">
+        UPDATE t_dealer set delivery_address = #{text} where id = #{id}
+    </update>
+
+    <select id="queryProductByGiveId" resultType="java.util.Map" parameterType="java.lang.String">
+        SELECT gp.give_num AS giveNum,d.id,d.product_num AS productNum,d.product_name AS productName,d.type_id as typeId,d.spec,d.retail_price_box
+        FROM t_give_product gp
+        LEFT JOIN t_product d ON d.id=gp.product_id
+        WHERE gp.give_id = #{giveId,jdbcType=VARCHAR} AND d.reserved1='0'
+    </select>
+
+    <select id="queryIsGive" resultType="int" parameterType="java.lang.String">
+        SELECT COUNT(0)
+        FROM t_give
+        WHERE order_id = #{orderId,jdbcType=VARCHAR} and give_type IN (2,3)
+    </select>
+
+    <select id="onlyNumMax" resultType="int">
+        SELECT ifnull(MAX(only_num_max),0) FROM t_give WHERE only_num LIKE CONCAT(DATE_FORMAT(NOW(),'%Y%m%d'),'%')
+    </select>
+
+    <select id="queryListByIdS" resultType="java.util.Map">
+        SELECT o.*,d.dealer_num AS dealerNum,d.register_tel
+        FROM  t_order o
+        LEFT JOIN t_dealer d ON d.id=o.consult_dealer_id
+        <where>
+            <if test="1==1">
+                1=1
+            </if>
+            <if test="ids!=null">
+                AND o.id IN
+                <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+        order by o.order_num desc
+    </select>
+
+    <select id="queryListByIdSZH" resultType="java.util.Map">
+        SELECT
+        o.id,o.import_time,o.area_name,o.dealer_type,o.sms_tel,o.name,o.address,o.product_names
+        ,o.consult_dealer_id,t.give_content,t.give_type,t.dealer_id
+        ,od.dealer_num AS odnum,od.name AS odname,od.register_tel AS odtel
+        ,gd.dealer_num AS gdnum,gd.name AS gdname,gd.register_tel AS gdtel
+        FROM  t_order o
+        LEFT JOIN t_give t ON o.id=t.order_id
+        LEFT JOIN t_dealer od ON od.id=o.consult_dealer_id
+        LEFT JOIN t_dealer gd ON gd.id=t.dealer_id
+
+        <where>
+            <if test="1==1">
+                1=1
+            </if>
+            <if test="ids!=null">
+                AND o.id IN
+                <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+--         order by t.state asc,t.create_time asc
+    </select>
+
+    <delete id="deleteByIds" parameterType="java.util.Map" >
+        DELETE FROM t_give WHERE  id IN
+        <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+    <select id="zhQuery" resultType="java.util.Map" parameterType="java.util.Map">
+        SELECT * FROM(
+        SELECT
+        o.id,o.import_time,o.area_name,o.dealer_type,o.sms_tel,o.name,o.address,o.product_names
+        ,o.consult_dealer_id,t.give_content,t.give_type,t.dealer_id
+        ,od.dealer_num AS odnum,od.name AS odname,od.register_tel AS odtel
+        ,gd.dealer_num AS gdnum,gd.name AS gdname,gd.register_tel AS gdtel,o.transfer_time
+        ,o.state,o.transfer_man_name,o.tel
+        FROM  t_order o
+        JOIN t_give t ON o.id=t.order_id
+        LEFT JOIN t_dealer od ON od.id=o.consult_dealer_id
+        LEFT JOIN t_dealer gd ON gd.id=t.dealer_id
+        UNION ALL
+        SELECT
+        o.id,o.import_time,o.area_name,o.dealer_type,o.sms_tel,o.name,o.address,o.product_names
+        ,o.consult_dealer_id,'' AS give_content,'' AS give_type,'' AS dealer_id
+        ,od.dealer_num AS odnum,od.name AS odname,od.register_tel AS odtel
+        ,'' AS gdnum,'' AS gdname,'' AS gdtel,o.transfer_time
+        ,o.state,o.transfer_man_name,o.tel
+        FROM  t_order o
+        LEFT JOIN t_dealer od ON od.id=o.consult_dealer_id
+        WHERE NOT EXISTS(SELECT d.id FROM t_give d WHERE d.order_id=o.id)
+        ) AS allzh
+        <where>
+            <if test="1==1">
+                1=1
+            </if>
+            <if test="state != null" >
+                and allzh.state =  #{state,jdbcType=VARCHAR}
+            </if>
+            <if test="areaName != null" >
+                and allzh.area_name like CONCAT('%',CONCAT(#{areaName,jdbcType=VARCHAR},'%'))
+            </if>
+            <if test="dealerType != null" >
+                and allzh.dealer_type =  #{dealerType,jdbcType=VARCHAR}
+            </if>
+            <if test="smsTel != null" >
+                and allzh.sms_tel =  #{smsTel,jdbcType=VARCHAR}
+            </if>
+            <if test="productNames != null" >
+                and allzh.product_names like CONCAT('%',CONCAT(#{productNames,jdbcType=VARCHAR},'%'))
+            </if>
+            <if test="giveContent != null" >
+                and allzh.give_content like CONCAT('%',CONCAT(#{giveContent,jdbcType=VARCHAR},'%'))
+            </if>
+            <if test="transferManName != null" >
+                and allzh.transfer_man_name like CONCAT('%',CONCAT(#{transferManName,jdbcType=VARCHAR},'%'))
+            </if>
+            <if test="createTimeStart != null">
+                and date_format(allzh.import_time,'%Y-%m-%d') &gt;=  #{createTimeStart,jdbcType=VARCHAR}
+            </if>
+            <if test="createTimeEnd != null">
+                and date_format(allzh.import_time,'%Y-%m-%d') &lt;=  #{createTimeEnd,jdbcType=VARCHAR}
+            </if>
+            <if test="cType == 0" >
+                and (allzh.product_names is NOT NULL AND allzh.product_names != '') AND (allzh.consult_dealer_id is NULL OR allzh.consult_dealer_id = '')
+            </if>
+            <if test="cType == 1" >
+                and (allzh.product_names is NOT NULL AND allzh.product_names != '') AND (allzh.consult_dealer_id is not NULL AND allzh.consult_dealer_id != '')
+            </if>
+            <if test="cType == 2" >
+                and allzh.give_type = '2' and ( allzh.dealer_id is NULL OR allzh.dealer_id = '')
+            </if>
+            <if test="cType == 3" >
+                and allzh.give_type = '2' and ( allzh.dealer_id is NOT NULL AND allzh.dealer_id != '')
+            </if>
+            <if test="cType == 4" >
+                and allzh.give_type = '3'
+            </if>
+            <if test="cType == 5" >
+                and allzh.id is NULL and (allzh.product_names is NULL OR allzh.product_names = '')
+            </if>
+            <if test="cType == 6" >
+                and  ((allzh.product_names is NOT NULL AND allzh.product_names != '' AND allzh.consult_dealer_id is not NULL AND allzh.consult_dealer_id != '' AND (allzh.give_content is NULL OR allzh.give_content =''))
+                OR (
+                allzh.give_content is NOT NULL AND allzh.give_content !='' AND allzh.dealer_id is NOT NULL AND allzh.dealer_id != ''
+                ))
+            </if>
+        </where>
+        order by allzh.transfer_time desc
+    </select>
+
+    <select id="queryIsGiveDealer" resultType="java.util.Map" parameterType="java.util.Map">
+        SELECT *
+        FROM t_give
+        WHERE dealer_id = #{dealerId,jdbcType=VARCHAR} and  date_format(create_time,'%Y-%m-%d') =  date_format(NOW(),'%Y-%m-%d') AND give_type = '1'
+    </select>
+
+</mapper>

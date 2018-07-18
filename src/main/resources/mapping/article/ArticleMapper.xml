@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cccuu.project.mapper.article.ArticleMapper" >
+    <insert id="addMulti" parameterType="java.util.List">
+        insert into t_article (id, title, technology_url,content, reply_sms, prompt_sms, article_type_id, sort, sms_num,modify_time)
+        values
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.id},#{item.title},#{item.technologyUrl},#{item.content},#{item.replySms},#{item.promptSms},#{item.articleTypeId}
+            ,#{item.sort},#{item.smsNum},#{item.modifyTime})
+        </foreach>
+    </insert>
+</mapper>

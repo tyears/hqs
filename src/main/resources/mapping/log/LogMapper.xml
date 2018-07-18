@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cccuu.project.mapper.log.LogMapper" >
+	<select id="queryListByParams" resultType="java.util.Map" parameterType="java.util.Map">
+  	select t.*,u.name as name,u.user_name as userName from t_log t left join sys_user u on t.user_id=u.id
+    <where>
+    	<if test="1==1">
+    		1=1
+    	</if>
+    	<if test="userId != null" >
+        	and t.user_id =  #{userId,jdbcType=VARCHAR}
+	    </if>
+	    <if test="type != null" >
+        	and t.type =  #{type,jdbcType=VARCHAR}
+	    </if>
+      	<if test="name != null" >
+	        and u.name like CONCAT('%',CONCAT(#{name,jdbcType=VARCHAR},'%'))
+      	</if>
+      	<if test="operation != null" >
+	        and t.operation like CONCAT('%',CONCAT(#{operation,jdbcType=VARCHAR},'%'))
+      	</if>
+      	<if test="method != null" >
+	        and t.method like CONCAT('%',CONCAT(#{method,jdbcType=VARCHAR},'%'))
+      	</if>
+      	<if test="requestIp != null" >
+	        and t.request_ip like CONCAT('%',CONCAT(#{requestIp,jdbcType=VARCHAR},'%'))
+      	</if>
+      	<if test="beginTime != null" >
+	        and t.create_time &gt;= #{beginTime,jdbcType=TIMESTAMP}
+      	</if>
+      	<if test="endTime != null" >
+	        and t.create_time  &lt;= #{endTime,jdbcType=TIMESTAMP}
+      	</if>
+    </where>
+    order by t.create_time desc
+  </select>
+
+	<select id="queryListByParams2" resultType="java.util.Map" parameterType="java.util.Map">
+		select t.*,u.name as name,u.user_name as userName from t_log t left join t_user u on t.user_id=u.id
+		<where>
+			<if test="1==1">
+				1=1
+			</if>
+			<if test="userId != null" >
+				and t.user_id =  #{userId,jdbcType=VARCHAR}
+			</if>
+			<if test="type != null" >
+				and t.type =  #{type,jdbcType=VARCHAR}
+			</if>
+			<if test="name != null" >
+				and u.name like CONCAT('%',CONCAT(#{name,jdbcType=VARCHAR},'%'))
+			</if>
+			<if test="operation != null" >
+				and t.operation like CONCAT('%',CONCAT(#{operation,jdbcType=VARCHAR},'%'))
+			</if>
+			<if test="method != null" >
+				and t.method like CONCAT('%',CONCAT(#{method,jdbcType=VARCHAR},'%'))
+			</if>
+			<if test="requestIp != null" >
+				and t.request_ip like CONCAT('%',CONCAT(#{requestIp,jdbcType=VARCHAR},'%'))
+			</if>
+			<if test="beginTime != null" >
+				and t.create_time &gt;= #{beginTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="endTime != null" >
+				and t.create_time  &lt;= #{endTime,jdbcType=TIMESTAMP}
+			</if>
+		</where>
+		order by t.create_time desc
+	</select>
+</mapper>

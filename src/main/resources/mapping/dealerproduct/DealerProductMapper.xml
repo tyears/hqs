@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cccuu.project.mapper.dealerproduct.DealerProductMapper" >
+    <select id="queryListByParams" resultType="java.util.Map">
+        select dp.*,t.product_num,t.product_name
+        from t_dealer_product dp
+        LEFT JOIN t_product t ON dp.product_id=t.id
+        <where>
+            <if test="1==1">
+                1=1
+            </if>
+            AND t.reserved1='0'
+            <if test="dealerId != null" >
+                and dp.dealer_id =  #{dealerId,jdbcType=VARCHAR}
+            </if>
+            <if test="keyword != null" >
+                and (t.product_name like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%')) or t.product_num like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%')) )
+            </if>
+        </where>
+        order by dp.id desc
+    </select>
+
+    <select id="queryProductByDealerId" resultType="java.util.Map">
+        SELECT dp.*, t.product_num,t.product_name,ap.author_dealer,ap.notice_dealer,ap.give_dealer,ap.apId,d.dealer_num AS notice_dealer1,ap.effect_time
+        FROM t_dealer_product dp
+        INNER JOIN t_product t ON dp.product_id = t.id
+        INNER JOIN t_dealer d ON dp.dealer_id = d.id
+        INNER JOIN (
+            SELECT tap.product_id AS pid,tap.author_dealer,tap.notice_dealer,tap.give_dealer,tap.id AS apId,tap.effect_time
+            FROM t_area_product tap
+            INNER JOIN t_dealer td ON tap.area_id = td.district_id
+            WHERE td.id = #{dealerId}
+        ) ap ON dp.product_id = ap.pid
+        WHERE dp.dealer_id = #{dealerId}
+        AND t.reserved1='0'
+        <if test="keyword != null" >
+            and (t.product_name like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%')) or t.product_num like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%')) )
+        </if>
+        <if test="sortNum !=null " >
+            ORDER BY SUBSTRING(t.product_num,2) DESC
+        </if>
+        <if test="sortNum == null" >
+            ORDER BY SUBSTRING(t.product_num,2) ASC
+        </if>
+    </select>
+
+    <select id="queryListImportByParams" resultType="java.util.Map">
+        select dp.comment,dp.import_time,dp.import_purchase_time,dp.last_purchase_time,t.product_num,d.dealer_num
+        from t_dealer_product dp
+        LEFT JOIN t_product t ON dp.product_id=t.id
+        LEFT JOIN t_dealer d ON d.id=dp.dealer_id
+        <where>
+            <if test="1==1">
+                1=1
+            </if>
+            AND t.reserved1='0'
+            <if test="isImport != null" >
+                and dp.is_import = '1'
+            </if>
+            <if test="isImportPurchase != null" >
+                and dp.is_import_purchase = '1'
+            </if>
+        </where>
+        order by dp.id desc
+    </select>
+
+    <update id="updateRemark">
+        UPDATE t_dealer_product SET remark = #{text} where id = #{id}
+    </update>
+
+    <update id="updateImport">
+        UPDATE t_dealer_product
+        <set>
+            <if test="isImport !=null">
+                is_import ='0'
+            </if>
+            <if test="isImportPurchase !=null">
+                is_import_purchase ='0'
+            </if>
+        </set>
+    </update>
+
+    <update id="updateComment">
+        UPDATE t_dealer_product dp
+        <set>
+            <if test="comment !=null">
+                dp.comment = #{comment},dp.import_time = now(),  dp.is_import = '1'
+            </if>
+            <if test="lastPurchaseTime !=null">
+                dp.last_purchase_time = #{lastPurchaseTime},dp.is_import_purchase = '1',dp.import_purchase_time=now()
+            </if>
+        </set>
+        WHERE
+            dp.id in (
+        SELECT a.id FROM (
+        SELECT
+                    dp.id
+                FROM
+                    t_dealer_product dp
+                LEFT JOIN t_product t ON dp.product_id = t.id
+                LEFT JOIN t_dealer d ON d.id = dp.dealer_id
+                WHERE
+        t.product_num = #{productNum} AND t.reserved1='0'
+        AND d.uuid = #{dealerNum}) a)
+    </update>
+
+    <insert id="addMulti" parameterType="java.util.List">
+        insert into t_dealer_product (id, product_id, give_num,first_time, last_time, dealer_give_num, company_give_num, notice_num, comment, last_purchase_time, true_month_time, remark, dealer_id,is_import,import_time,is_import_purchase,import_purchase_time)
+        values
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.id},#{item.productId},#{item.giveNum},#{item.firstTime},#{item.lastTime},#{item.dealerGiveNum},#{item.companyGiveNum},#{item.noticeNum},#{item.comment},#{item.lastPurchaseTime},#{item.trueMonthTime},#{item.remark},#{item.dealerId}
+            ,#{item.isImport},#{item.importTime},#{item.isImportPurchase},#{item.importPurchaseTime}
+            )
+        </foreach>
+    </insert>
+
+    <!--<update id="updateMuch" parameterType="Map">-->
+        <!--update t_dealer_product   set-->
+        <!--a=#{fptm},-->
+        <!--b=#{csoftrain}-->
+        <!--where c in-->
+        <!--<foreach collection="cs" index="index" item="item" open="(" separator="," close=")">-->
+            <!--#{item}-->
+        <!--</foreach>-->
+    <!--</update>-->
+
+    <select id="queryOne" resultType="java.util.Map">
+          SELECT
+                    dp.*
+                FROM
+                    t_dealer_product dp
+                LEFT JOIN t_product t ON dp.product_id = t.id
+                LEFT JOIN t_dealer d ON d.id = dp.dealer_id
+                WHERE
+        t.product_num = #{productNum} AND t.reserved1='0'
+        AND d.uuid = #{uuid}
+    </select>
+</mapper>

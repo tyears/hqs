@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cccuu.project.mapper.remarks.RemarksMapper">
+
+    <select id="getRemarksList" resultType="map">
+        SELECT id,make,text from sys_down_remarks
+        <where>
+            <if test="1==1">
+                1=1
+            </if>
+            <if test="isIp!=null">
+                and reserved1 = #{isIp}
+            </if>
+        </where>
+
+    </select>
+
+    <select id="updateRemark">
+        UPDATE sys_down_remarks SET text = #{text} where id = #{id}
+    </select>
+</mapper>

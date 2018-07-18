@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cccuu.project.mapper.dealer.DealerMapper" >
+
+    <select id="queryDealerList" resultType="java.util.Map">
+        SELECT *
+        FROM t_dealer
+        <where>
+            <if test="1==1">
+                1=1
+            </if>
+            <if test="dealerNum != null">
+               AND dealer_num like CONCAT('%',CONCAT(#{dealerNum,jdbcType=VARCHAR},'%'))
+            </if>
+            <if test="districtId != null">
+                AND district_id = #{districtId,jdbcType=VARCHAR}
+            </if>
+            <if test="cityId != null">
+                AND city_id = #{cityId,jdbcType=VARCHAR}
+            </if>
+            <if test="provinceId != null">
+                AND province_id = #{provinceId,jdbcType=VARCHAR}
+            </if>
+            <if test="areaId != null">
+                AND district_id = #{areaId,jdbcType=VARCHAR}
+            </if>
+            <if test="registerTel != null">
+                AND (register_tel like CONCAT('%',CONCAT(#{registerTel,jdbcType=VARCHAR},'%'))
+                OR other_tel like CONCAT('%',CONCAT(#{registerTel,jdbcType=VARCHAR},'%'))
+                OR delivery_tel like CONCAT('%',CONCAT(#{registerTel,jdbcType=VARCHAR},'%'))
+                )
+            </if>
+            <if test="name != null">
+                AND name like CONCAT('%',CONCAT(#{name,jdbcType=VARCHAR},'%'))
+            </if>
+            <if test="type != null">
+                <if test="type == 0">
+                    AND dealer_num IS NOT NULL AND dealer_num !=''
+                    AND dealer_type = '1'
+                </if>
+                <if test="type == 1">
+                    AND (dealer_num IS NULL OR dealer_num ='')
+                </if>
+                <if test="type != 0">
+                    AND dealer_type = #{type,jdbcType=VARCHAR}
+                </if>
+            </if>
+            <if test="matchTel != null">
+                AND (register_tel like CONCAT('%',CONCAT(#{matchTel,jdbcType=VARCHAR},'%'))
+                OR delivery_tel like CONCAT('%',CONCAT(#{matchTel,jdbcType=VARCHAR},'%'))
+                OR other_tel like CONCAT('%',CONCAT(#{matchTel,jdbcType=VARCHAR},'%'))
+                )
+            </if>
+            <if test="dealerType != null">
+                AND dealer_type = #{dealerType,jdbcType=VARCHAR}
+            </if>
+            <if test="keyword != null">
+                    AND (
+                    dealer_num like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%'))
+                    OR name like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%'))
+                    OR register_tel like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%'))
+                    OR delivery_tel like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%'))
+                    OR other_tel like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%'))
+                    OR postal_address like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%'))
+                    OR remark like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%'))
+                    OR company_name like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%'))
+                    )
+            </if>
+            ORDER BY create_time DESC
+        </where>
+    </select>
+
+    <select id="queryListByPage" resultType="java.util.Map">
+        SELECT d.*,CONCAT(c.area_name,t.area_name,a.area_name) AS area_name
+        FROM t_dealer d
+        LEFT JOIN t_area a ON a.id=d.district_id
+        LEFT JOIN t_area t ON a.fk_id = t.id
+        LEFT JOIN t_area c ON t.fk_id = c.id
+        <where>
+            <if test="1==1">
+                1=1
+            </if>
+            <if test="districtId != null">
+                AND district_id = #{districtId,jdbcType=VARCHAR}
+            </if>
+            <if test="cityId != null">
+                AND city_id = #{cityId,jdbcType=VARCHAR}
+            </if>
+            <if test="provinceId != null">
+                AND province_id = #{provinceId,jdbcType=VARCHAR}
+            </if>
+            <if test="keyword != null">
+                AND (
+                d.dealer_num like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%'))
+                OR d.name like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%'))
+                OR d.overall_merit like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%'))
+                OR CONCAT(c.area_name,t.area_name,a.area_name) like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%'))
+                OR d.company_name like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%'))
+                OR d.company_name like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%'))
+                OR d.postal_address like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%'))
+                OR d.register_tel like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%'))
+                OR d.sms_tel like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%'))
+                OR d.delivery_tel like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%'))
+                OR d.other_tel like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%'))
+                )
+            </if>
+            <if test="dealerType != null">
+                AND d.dealer_type = #{dealerType,jdbcType=VARCHAR}
+            </if>
+            ORDER BY d.create_time DESC
+        </where>
+    </select>
+
+   <select id="countDealer" resultType="java.lang.Integer">
+       SELECT COUNT(*) FROM t_dealer
+       <where>
+           <if test="1==1">
+               1=1
+           </if>
+           <if test="areaId!=null">
+               AND district_id=#{areaId,jdbcType=VARCHAR}
+           </if>
+           <if test="cooperationState==0">
+               AND ishezuo = 'n'
+           </if>
+           <if test="cooperationState==1">
+               AND ishezuo = 'y'
+           </if>
+           <if test="dealerType!=null">
+               AND dealer_type=#{dealerType,jdbcType=VARCHAR}
+           </if>
+       </where>
+
+
+   </select>
+
+    <update id="updatePingText">
+        UPDATE t_dealer SET
+        <if test="type==0">
+            overall_merit = #{text}
+        </if>
+        <if test="type==1">
+            cooperation_state = #{text}
+        </if>
+        WHERE id = #{id}
+    </update>
+
+    <select id="codeNum" resultType="int">
+        SELECT ifnull(SUBSTR(MAX(dealer_num),2,LENGTH(MAX(dealer_num))-1),0 )
+        from t_dealer
+    </select>
+
+    <select id="isHasPhone" resultType="map">
+        SELECT id FROM t_dealer WHERE
+        (
+        <foreach collection="array" item="item" index="index"
+                 separator=" or "> register_tel LIKE concat(concat('%',#{item}),'%')
+        </foreach>
+        OR
+        <foreach collection="array" item="item" index="index"
+                 separator=" or "> other_tel LIKE concat(concat('%',#{item}),'%')
+        </foreach>
+        )
+        <if test="id !='' and id !=null">
+            and id != #{id}
+        </if>
+    </select>
+
+    <select id="queryListImportByPage" resultType="java.util.Map">
+        SELECT dealer_num,overall_merit,import_time FROM t_dealer
+        <where>
+            <if test="1==1">
+                1=1
+            </if>
+            AND reserved1 ='1'
+        </where>
+    </select>
+
+    <update id="updateImport">
+        UPDATE t_dealer SET reserved1='0'
+    </update>
+
+    <insert id="addMulti" parameterType="java.util.List">
+        insert into t_dealer (id, dealer_num, register_tel, name, administrative_division, consignee, postcode,
+        cooperation_time,overall_merit, sms_tel, district_name, district_id, distribution_area, company_name, delivery_address, delivery_tel, fax,
+        cooperation_state, credit_evaluation, remark, postal_address, other_tel, create_time, dealer_type, province_id, city_id,
+        reserved1,  dealer_num_int, ishezuo, import_time, uuid,sms_address)
+        values
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.id},#{item.dealerNum},#{item.registerTel},#{item.name},#{item.administrativeDivision},#{item.consignee},#{item.postcode}
+            ,#{item.cooperationTime},#{item.overallMerit},#{item.smsTel},#{item.districtName},#{item.districtId},#{item.distributionArea}
+            ,#{item.companyName},#{item.deliveryAddress},#{item.deliveryTel},#{item.fax},#{item.cooperationState},#{item.creditEvaluation}
+            ,#{item.remark},#{item.postalAddress},#{item.otherTel},#{item.createTime},#{item.dealerType},#{item.provinceId}
+            ,#{item.cityId},#{item.reserved1},#{item.dealerNumInt},#{item.ishezuo},#{item.importTime},#{item.uuid},#{item.smsAddress}
+            )
+        </foreach>
+    </insert>
+
+    <select id="queryListByMapDouble" resultMap="dealerProductMap">
+        SELECT d.id,d.name,d.dealer_num,d.overall_merit,d.cooperation_state,d.register_tel,d.delivery_address,dp.id as dpid,dp.comment,dp.product_id
+        ,d.sms_address,d.sms_tel,d.postal_address
+        FROM t_dealer d
+        LEFT JOIN t_dealer_product dp ON dp.dealer_id=d.id
+        where 1=1 AND d.dealer_type = '1'
+        <if test="areaId != null" >
+            AND d.district_id = #{areaId}
+        </if>
+        <if test="ishezuo != null" >
+            AND ishezuo = #{ishezuo}
+        </if>
+    </select>
+
+    <resultMap type="com.cccuu.project.model.dealer.Dealer" id="dealerProductMap">
+        <id column="id" property="id"/>
+        <result column="dealer_num" property="dealerNum"/>
+        <result column="overall_merit" property="overallMerit"/>
+        <result column="cooperation_state" property="cooperationState"/>
+        <result column="name" property="name"/>
+        <result column="register_tel" property="registerTel"/>
+        <result column="sms_address" property="smsAddress"/>
+        <result column="sms_tel" property="smsTel"/>
+        <result column="postal_address" property="postalAddress"/>
+        <!-- 关联产品 -->
+        <collection property="dpList" ofType="com.cccuu.project.model.dealerproduct.DealerProduct">
+            <id column="dpid" property="id"/>
+            <result column="comment" property="comment"/>
+            <result column="product_id" property="productId"/>
+        </collection>
+    </resultMap>
+</mapper>

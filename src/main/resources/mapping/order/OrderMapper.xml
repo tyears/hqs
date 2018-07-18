@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cccuu.project.mapper.order.OrderMapper" >
+    <select id="obtainOrder" resultType="com.cccuu.project.model.order.Order">
+        select t.id,t.dealer_type as dealerType,t.message_type as messageType,t.tel,t.name,t.number_attribution as numberAttribution,
+        t.dealer_message as dealerMessage,t.address,t.dealer_id as dealerId,t.user_name as userName,t.user_id as userId,t.import_time as importTime,
+        t.state,t.user_message as userMessage,t.print_state as printState,t.import_type as importType,t.no_heard_num as noHeardNum,
+        t.transfer_time as transferTime,t.obtain_user_id as obtainUserId,t.area_name as areaName,t.sms_tel as smsTel,t.product_names as productNames,
+        t.dealer_num as dealerNum,t.area_id as areaId,t.ex_product_names as exProductNames,t.is_match AS isMatch
+        from t_order t
+        <where>
+                 t.state IN
+            <foreach collection="state" index="index" item="item" open="(" separator="," close=")">
+                                #{item}
+            </foreach>
+                and (t.no_heard_num = 0 or (t.no_heard_num &gt; 0 and t.transfer_time &lt; NOW()))
+            and (t.obtain_user_id is NULL or t.obtain_user_id='')
+        </where>
+        order by t.is_transfer DESC,t.transfer_time asc,t.import_type DESC,t.import_time asc
+        limit 1
+    </select>
+
+    <select id="queryOrderData" resultType="java.util.Map">
+        select t.*,u.name AS userName
+        from t_order t
+        LEFT JOIN t_user u ON u.id=t.obtain_user_id
+        <where>
+            t.state IN
+            <foreach collection="dclState" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+            <if test="keyword != null" >
+                and (t.tel = #{keyword} OR t.order_num = #{keyword})
+            </if>
+            <if test="isxdcx!=null">
+                and (t.no_heard_num = 0 or (t.no_heard_num &gt; 0 and t.transfer_time &lt; NOW()))
+                and (t.obtain_user_id is NULL or t.obtain_user_id='')
+            </if>
+        </where>
+        order by t.is_transfer DESC,t.transfer_time asc,t.import_type DESC,t.import_time asc
+    </select>
+
+    <select id="queryConsultInfo" resultType="java.util.Map" parameterType="java.util.Map">
+            select o.import_time,o.tel,o.name,o.address,o.product_names,o.user_name,d.id as dealerId,d.dealer_num,d.register_tel
+            from t_order o LEFT JOIN t_dealer d ON o.dealer_id=d.id
+            <where>
+                <if test="1==1">
+                    1=1
+                </if>
+                AND (SELECT count(*) FROM t_give g WHERE g.order_id=o.id)>0
+            </where>
+        ORDER BY o.import_time ASC
+    </select>
+
+    <select id="getOrdernumMax" resultType="int">
+        SELECT ifnull(MAX(order_num_int),0) FROM t_order WHERE order_num LIKE CONCAT(DATE_FORMAT(NOW(),'%Y%m%d'),'%')
+    </select>
+
+    <select id="isOrderByNum" resultType="map">
+        SELECT * from t_order where order_num = #{num} and (obtain_user_id is null or obtain_user_id='')  and state in
+        <foreach collection="state" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="dclNum" resultType="int" >
+        select COUNT(0)
+        from t_order t
+        <where>
+            t.state IN
+            <foreach collection="state" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+            and (t.obtain_user_id is NULL or t.obtain_user_id='' or t.obtain_user_id=#{userId})
+        </where>
+    </select>
+
+    <select id="allNum" resultType="int" parameterType="java.lang.String">
+        select COUNT(0)
+        from t_order t
+        <where>
+            t.state IN
+            <foreach collection="state" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+            and TO_DAYS(t.import_time)=TO_DAYS(NOW())
+        </where>
+    </select>
+
+    <update id="updateImport">
+        UPDATE t_order set is_import='0'
+    </update>
+
+    <select id="queryListByParams" resultType="java.util.Map" parameterType="java.util.Map">
+        SELECT
+        o.*,d.dealer_num AS dealerNum,d.register_tel
+        FROM  t_order o
+        LEFT JOIN t_dealer d ON d.id=o.consult_dealer_id
+        <where>
+            <if test="1==1">
+                1=1
+            </if>
+            <if test="notNull != null" >
+                and o.product_names IS NOT NULL AND o.product_names != ''
+            </if>
+        </where>
+        order by o.order_num desc
+    </select>
+
+    <select id="matchOrderAreaBytel" resultType="java.util.Map" parameterType="java.util.Map">
+        SELECT
+        o.area_id,o.area_name,o.dealer_type
+        FROM  t_order o
+        WHERE o.tel= #{tel}
+        <if test="id != null">
+            AND o.id != #{id}
+        </if>
+        order by o.import_time desc
+    </select>
+</mapper>

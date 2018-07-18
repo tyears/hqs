@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cccuu.project.mapper.area.AreaProductMapper" >
+	<select id="queryListByParams" resultType="java.util.Map">
+        SELECT p.id as productId,p.product_name as productName,p.product_num as productNum,p.spec,ap.* FROM t_product p
+        LEFT JOIN (SELECT a.*,td.dealer_num AS notice_dealer1 FROM t_area_product a LEFT JOIN t_dealer td ON td.id = a.notice_dealer_id WHERE area_id = #{areaId}) ap ON p.id=ap.product_id
+    <where>
+        <if test="1==1">
+            1=1
+        </if>
+        AND p.reserved1='0'
+        <if test="productName != null" >
+            and p.product_name like CONCAT('%',CONCAT(#{productName,jdbcType=VARCHAR},'%'))
+        </if>
+        <if test="productNum != null" >
+            and p.product_num like CONCAT('%',CONCAT(#{productNum,jdbcType=VARCHAR},'%'))
+        </if>
+        <if test="jianpin != null" >
+            and p.jianpin like CONCAT('%',CONCAT(#{jianpin,jdbcType=VARCHAR},'%'))
+        </if>
+        <if test="keyword != null" >
+            and (p.product_name like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%')) or p.product_num like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%')) )
+        </if>
+    </where>
+        <if test="sortNum == 'asc'" >
+            ORDER BY SUBSTRING(p.product_num,2) ASC,p.sort ASC
+        </if>
+        <if test="sortNum =='desc' " >
+            ORDER BY SUBSTRING(p.product_num,2) DESC,p.sort ASC
+        </if>
+        <if test="sortNum == null" >
+            ORDER BY SUBSTRING(p.product_num,2) ASC,p.sort ASC
+        </if>
+    </select>
+
+    <select id="queryListByParamsPage" resultType="java.util.Map">
+        SELECT p.id as productId,p.product_name as productName,p.product_num as productNum,p.spec,ap.* FROM t_product p
+        RIGHT JOIN t_area_product ap ON p.id=ap.product_id
+        <where>
+            <if test="1==1">
+                1=1
+            </if>
+            AND p.reserved1='0'
+            <if test="areaId != null" >
+                and ap.area_id =  #{areaId,jdbcType=VARCHAR}
+            </if>
+            <if test="productName != null" >
+                and p.product_name like CONCAT('%',CONCAT(#{productName,jdbcType=VARCHAR},'%'))
+            </if>
+            <if test="productNum != null" >
+                and p.product_num like CONCAT('%',CONCAT(#{productNum,jdbcType=VARCHAR},'%'))
+            </if>
+            <if test="jianpin != null" >
+                and p.jianpin like CONCAT('%',CONCAT(#{jianpin,jdbcType=VARCHAR},'%'))
+            </if>
+            <if test="keyword != null" >
+                and (p.product_name like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%')) or p.product_num like CONCAT('%',CONCAT(#{keyword,jdbcType=VARCHAR},'%')) )
+            </if>
+        </where>
+        <if test="sortNum == 'asc'" >
+            ORDER BY SUBSTRING(p.product_num,2) ASC,p.sort ASC
+        </if>
+        <if test="sortNum =='desc' " >
+            ORDER BY SUBSTRING(p.product_num,2) DESC,p.sort ASC
+        </if>
+        <if test="sortNum == null" >
+            ORDER BY SUBSTRING(p.product_num,2) ASC,p.sort ASC
+        </if>
+    </select>
+
+    <update id="updateJssOrGs">
+        UPDATE t_area_product SET
+        <if test="type == 'gs'">
+            notice_dealer = #{jsscode},
+            notice_dealer_id = #{jssid},
+            give_dealer = '',
+            give_dealer_id = ''
+        </if>
+        <if test="type == 'jss'">
+            notice_dealer = '',
+            notice_dealer_id = '',
+            give_dealer = #{jsscode},
+            give_dealer_id = #{jssid}
+        </if>
+        <if test="type == 'gsh'">
+            notice_dealer = 'H0000',
+            notice_dealer_id = '',
+            give_dealer = '',
+            give_dealer_id = ''
+        </if>
+            WHERE id = #{apid}
+    </update>
+
+    <!--<update id="updateComment">-->
+        <!--UPDATE t_area-->
+        <!--SET comment=#{comment},is_import='1',import_time=now()-->
+        <!--WHERE id in(-->
+        <!--SELECT f.id FROM(-->
+        <!--SELECT-->
+            <!--a.id-->
+        <!--FROM-->
+            <!--t_area a-->
+        <!--LEFT JOIN t_area t ON a.fk_id = t.id-->
+        <!--LEFT JOIN t_area d ON t.fk_id = d.id-->
+        <!--WHERE a.level=2 AND CONCAT(d.area_name,t.area_name,a.area_name)= #{areaName} ) f)-->
+    <!--</update>-->
+
+    <update id="updateComment">
+        UPDATE t_area
+        SET comment=#{comment},is_import='1',import_time=now()
+        WHERE level=2 AND area_name= #{areaName}
+    </update>
+
+    <select id="queryAreaImport" resultType="java.util.Map">
+        SELECT
+            CONCAT(d.area_name,t.area_name,a.area_name) AS area_name,a.import_time,a.comment
+        FROM
+            t_area a
+        LEFT JOIN t_area t ON a.fk_id = t.id
+        LEFT JOIN t_area d ON t.fk_id = d.id
+        WHERE a.level='2' AND a.is_import='1'
+    </select>
+
+    <update id="updateAreaImport">
+        UPDATE t_area set is_import='0'
+    </update>
+
+
+    <update id="updateAreaProductComment">
+        UPDATE t_area_product ap
+        SET ap.comment =#{comment},ap.is_import='1',ap.import_time=now()
+        WHERE ap.product_id in(
+        SELECT apa.id FROM (
+        SELECT p.id FROM t_product p WHERE p.product_num=#{productNum} AND p.reserved1='0'
+        ) apa
+        )
+        AND ap.area_id in
+        (SELECT f.id FROM(
+        SELECT
+            a.id
+        FROM
+            t_area a
+        WHERE a.level=2 AND a.area_name=#{areaName} ) f)
+    </update>
+
+    <update id="updateAreaProductImport">
+        UPDATE t_area_product SET is_import='0'
+    </update>
+
+    <select id="queryAreaProductImport" resultType="java.util.Map">
+        SELECT p.product_num,CONCAT(d.area_name,t.area_name,a.area_name) AS area_name,ap.import_time,ap.comment,ap.author_dealer,ap.author_import_time FROM t_area_product ap
+        LEFT JOIN t_product p ON p.id=ap.product_id
+        LEFT JOIN t_area a ON a.id=ap.area_id
+        LEFT JOIN t_area t ON a.fk_id = t.id
+        LEFT JOIN t_area d ON t.fk_id = d.id
+        WHERE a.level='2'
+        AND p.reserved1='0'
+        <if test="isImport != null">
+           AND ap.is_import='1'
+        </if>
+        <if test="authorIsImport != null">
+        AND ap.author_is_import='1'
+        </if>
+    </select>
+
+
+    <select id="queryAreaList" resultType="java.util.Map">
+        SELECT
+        CONCAT(d.area_name,'-',t.area_name,'-',a.area_name) AS areaName,a.id,a.fk_id AS fkId,a.level,a.spell
+        FROM
+        t_area a
+        LEFT JOIN t_area t ON a.fk_id = t.id
+        LEFT JOIN t_area d ON t.fk_id = d.id
+        WHERE a.level='2'
+        <if test="areaName != null">
+            AND ( CONCAT(d.area_name,'-',t.area_name,'-',a.area_name) like CONCAT('%',CONCAT(#{areaName,jdbcType=VARCHAR},'%'))
+            OR CONCAT(IFNULL(d.spell,''),'-',IFNULL(t.spell,''),'-',IFNULL(a.spell,'')) like CONCAT('%',CONCAT(#{areaName,jdbcType=VARCHAR},'%'))
+            )
+        </if>
+        <if test="areaId != null">
+            AND a.id= #{areaId,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <select id="queryAreaOne" resultType="java.util.Map">
+        SELECT
+        CONCAT(d.area_name,t.area_name,a.area_name) AS areaName,a.id,a.fk_id AS fkId,a.level,d.id AS ffkId
+        FROM
+        t_area a
+        LEFT JOIN t_area t ON a.fk_id = t.id
+        LEFT JOIN t_area d ON t.fk_id = d.id
+        WHERE a.level='2' AND CONCAT(d.area_name,t.area_name,a.area_name)=#{areaName}
+    </select>
+
+    <insert id="addMulti" parameterType="java.util.List">
+        insert into t_area_product (id,area_id, product_id, author_dealer,author_dealer_id, comment, notice_dealer, notice_dealer_id, give_dealer, give_dealer_id, effect_time, is_import, import_time)
+        values
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.id},#{item.areaId},#{item.productId},#{item.authorDealer},#{item.authorDealerId},#{item.comment},#{item.noticeDealer},#{item.noticeDealerId},#{item.giveDealer},#{item.giveDealerId},#{item.effectTime},#{item.isImport},#{item.importTime}
+            )
+        </foreach>
+    </insert>
+
+    <select id="queryOne" resultType="java.util.Map">
+        SELECT ap.id FROM t_area_product ap
+        LEFT JOIN t_area a ON ap.area_id=a.id
+        LEFT JOIN t_product p ON ap.product_id=p.id
+        WHERE a.level='2' AND a.area_name = #{areaName} AND p.product_num=#{productNum} AND p.reserved1='0'
+    </select>
+
+    <select id="queryApByUuid" resultType="java.util.Map">
+        SELECT ap.id FROM t_area_product ap
+        LEFT JOIN t_dealer d ON ap.area_id=d.district_id
+        LEFT JOIN t_product p ON p.id=ap.product_id
+        <where>
+            <if test="1==1">
+                1=1
+            </if>
+            <if test="uuid != null" >
+                and d.uuid =  #{uuid,jdbcType=VARCHAR}
+            </if>
+            <if test="uuid != null" >
+                and p.product_num =  #{productNum,jdbcType=VARCHAR} AND p.reserved1='0'
+            </if>
+        </where>
+    </select>
+
+    <update id="updateAuthor">
+        UPDATE t_area_product
+        SET author_is_import='1',author_import_time=now()
+        ,author_dealer = #{authorDealer} , author_dealer_id =#{authorDealerId}
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateAuthorImport">
+        UPDATE t_area_product SET author_is_import='0'
+    </update>
+</mapper>
