@@ -34,7 +34,7 @@
             </if>
             <if test="isxdcx!=null">
                 and (t.no_heard_num = 0 or (t.no_heard_num &gt; 0 and t.transfer_time &lt; NOW()))
-                and (t.obtain_user_id is NULL or t.obtain_user_id='')
+                <!--and (t.obtain_user_id is NULL or t.obtain_user_id='')-->
             </if>
         </where>
         order by t.is_transfer DESC,t.transfer_time asc,t.import_type DESC,t.import_time asc
