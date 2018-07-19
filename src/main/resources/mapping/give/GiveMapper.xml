@@ -95,6 +95,9 @@
             <if test="reserved1 != null" >
                 and t.reserved1 = #{reserved1,jdbcType=VARCHAR}
             </if>
+            <if test="goodsNumForSearch != null">
+                and t.goods_Num like CONCAT('%',CONCAT(#{goodsNumForSearch,jdbcType=VARCHAR},'%'))
+            </if>
         </where>
         order by t.create_time DESC
     </select>

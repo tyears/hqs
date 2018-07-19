@@ -47,9 +47,11 @@
                             <input type="hidden" id="pageNum" name="pageNum" value="1"/>
                             <input type="hidden" id="pageSize" name="pageSize" value="${pageInfo.pageSize}"/>
                             <input type="hidden"  name="giveTypeKD" value="${params.giveTypeKD}" id="giveTypeKD"/>
-                            <input style="width:150px;margin-left: 10px;" type="text" name="keyTel" placeholder="手机号码" value="${params.keyTel}" id="keyTel">
-                            <input style="width:150px;" type="text" name="createTimeStart" placeholder="开始时间" value="${params.createTimeStart}" class="laydate-icon" id="start">
-                            <input style="width:150px;" type="text" name="createTimeEnd" class="laydate-icon" value="${params.createTimeEnd}" id="end" placeholder="结束时间">
+                            <input style="width:150px;" type="text" name="keyTel" placeholder="手机号码" value="${params.keyTel}" id="keyTel">
+                            <input style="width:150px;" type="text" name="goodsNumForSearch" placeholder="快递单号" value="${params.goodsNumForSearch}" id="goodsNumForSearch">
+                            <input style="width:150px;" type="text" name="createTimeStart" placeholder="开始时间" value="${params.createTimeStart}" id="start">
+                            <input style="width:150px;" type="text" name="createTimeEnd" value="${params.createTimeEnd}" id="end" placeholder="结束时间">
+
                             <c:if test="${params.giveTypeKD=='1'}">
                                 <select style="width:100px;" name="reserved1" id="reserved1">
                                     <option ${empty params.reserved1?'selected':''} value="">全部</option>
