@@ -33,20 +33,20 @@
                             <td class="new_wi03" onClick="location.href='dealerPc/toDealerDetail.html?dealerId=${product.author_dealer_id}'">${product.author_dealer}</td>
                         </c:if>
                         <td class="new_wi04">${product.comment}</td>
-                        <c:if test="${empty product.notice_dealer1}">
+                        <c:if test="${empty product.notice_dealer}">
                             <c:if test="${empty product.id}">
                                 <td class="new_wi05" onClick="zsjxOnclick('${product.productId}','${product.productNum} ${product.productName}');">H0000</td>
                             </c:if>
                             <c:if test="${not empty product.id}">
-                                <td class="new_wi05" onClick="layer.msg('没有经销商')">${product.notice_dealer1}</td>
+                                <td class="new_wi05" onClick="layer.msg('没有经销商')">${product.notice_dealer}</td>
                             </c:if>
                         </c:if>
-                        <c:if test="${not empty product.notice_dealer1}">
-                            <c:if test="${product.notice_dealer1=='H0000'}">
-                                <td class="new_wi05" onClick="zsjxOnclick('${product.productId}','${product.productNum} ${product.productName}');">${product.notice_dealer1}</td>
+                        <c:if test="${not empty product.notice_dealer}">
+                            <c:if test="${product.notice_dealer=='H0000'}">
+                                <td class="new_wi05" onClick="zsjxOnclick('${product.productId}','${product.productNum} ${product.productName}');">${product.notice_dealer}</td>
                             </c:if>
-                            <c:if test="${product.notice_dealer1!='H0000'}">
-                                <td class="new_wi05" onClick="location.href='dealerPc/toDealerDetail.html?dealerId=${product.notice_dealer_id}'">${product.notice_dealer1}</td>
+                            <c:if test="${product.notice_dealer!='H0000'}">
+                                <td class="new_wi05" onClick="location.href='dealerPc/toDealerDetail.html?dealerId=${product.notice_dealer_id}'">${product.notice_dealer}</td>
                             </c:if>
                         </c:if>
                         <c:if test="${empty product.give_dealer}">
