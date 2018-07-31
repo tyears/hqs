@@ -49,7 +49,7 @@
                     <td class="wh_10"><fmt:formatDate value="${info.last_purchase_time}"
                                                       pattern="yyyy-MM-dd"/></td>
                     <td class="wh_11">${info.author_dealer}</td>
-                    <td class="wh_12">${not empty info.apId?info.notice_dealer1:'H0000'}</td>
+                    <td class="wh_12">${not empty info.apId?info.notice_dealer:'H0000'}</td>
                     <td class="wh_13">${info.give_dealer}</td>
                     <td class="wh_14"><fmt:formatDate value="${info.true_month_time}"
                                                       pattern="yyyy-MM-dd"/></td>
