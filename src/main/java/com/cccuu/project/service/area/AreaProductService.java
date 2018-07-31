@@ -79,5 +79,5 @@ public interface AreaProductService extends BaseService<AreaProduct>{
 	 *             pj:市场品种月均评价导入 sq:授权导入 ht:后台新增
 	 */
 	public  boolean addAP(AreaProduct areaProduct,String type);
-
+	public void emptyAuthorDealer();
 }

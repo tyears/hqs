@@ -119,6 +119,7 @@ public class AreaProductServiceImpl extends BaseServiceImpl<AreaProduct> impleme
 	public void updateAuthor(Map<String,String> params) {
 		areaProductMapper.updateAuthor(params);
 	}
+	public void emptyAuthorDealer(){areaProductMapper.emptyAuthorDealer();}
 
 	@Override
 	@Transactional

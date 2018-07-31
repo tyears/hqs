@@ -642,7 +642,11 @@ public class DealerPcController extends BaseController{
         //1,经销商总量月均 dealer; 2,经销商品种月均dealerProduct; 3,市场总量月均area;
         // 4,市场品种月均areaProduct; 5,最新进货日期dealerProduct;6,经销商品种授权areaProduct
         //7,交往记录导入
+
         String importType=request.getParameter("importType");
+        if("6".equals(importType)){
+            areaProductService.emptyAuthorDealer();
+        }
         try {
             MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 

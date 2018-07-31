@@ -235,4 +235,8 @@
     <update id="updateAuthorImport">
         UPDATE t_area_product SET author_is_import='0'
     </update>
+
+    <update id="emptyAuthorDealer">
+        UPDATE t_area_product set author_dealer=NULL
+    </update>
 </mapper>

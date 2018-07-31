@@ -111,4 +111,6 @@ public interface AreaProductMapper extends BaseMapper<AreaProduct>{
      * 修改单位市场下产品的授权导入状态
      */
     public void updateAuthorImport();
+
+    public void emptyAuthorDealer();
 }
