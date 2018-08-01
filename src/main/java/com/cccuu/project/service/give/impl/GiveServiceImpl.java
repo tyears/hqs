@@ -397,7 +397,8 @@ public class GiveServiceImpl extends BaseServiceImpl<Give> implements GiveServic
 		for (Map<String, Object> result : results) {
 			if(StringUtils.isNotBlank((String) result.get("area_name"))){
 				String[] strArr=((String) result.get("area_name")).split("-");
-				result.put("area_name",strArr[2]);
+
+				result.put("area_name", strArr.length == 1 ? strArr[0] : strArr[2]);
 			}
 		}
 
