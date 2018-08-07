@@ -13,7 +13,7 @@
     <script language="javascript" src="js/lodop/LodopFuncs.js"></script>
     <style>
         .smsStyle{
-            display:block;resize: none;width: 100%;background-color: #f5f5f5;border: 0px; margin-bottom: 15px;padding: 10px;font-size: 16px;color: #333333;min-height: 140px;
+            display:block;resize: none;width: 100%;background-color: #f5f5f5;border: 0px; margin-bottom: 15px;padding: 10px;font-size: 14px;color: #333333;min-height: 140px;
         }
     </style>
     <link rel="stylesheet" type="text/css" href="js/jquery-ui-1.12.1/jquery-ui.min.css" />
@@ -135,10 +135,11 @@
                 <h3 class="tianjia" onclick="addTr();">添加一个产品</h3>
             </div>
             <div class="ddmidd zssma">
-                <textarea rows="4" placeholder="赠送说明:" id="zssm" class="smsStyle"></textarea>
+                <div id="giveStatuslabel">赠送状态：</div>
+                <textarea rows="7" placeholder=" 1:成功 &#10 2:拒收 &#10 3:无人接听 &#10 4:挂断 &#10 5:改行 &#10 6:空号 &#10 7:其他" id="zssm" class="smsStyle"></textarea>
                 <textarea rows="4" placeholder="给客户发短信：" id="khSms" class="smsStyle" ></textarea>
                 <textarea rows="4" placeholder="给经销商发短信：" id="jxsSms" class="smsStyle" ></textarea>
-                <div onclick="saveGive();" style="width: 100%;height: 54px;background: #41973c;text-align: center;line-height: 54px;color: #fff;margin-top: 20px;cursor: pointer;font-size: 15px;font-weight: bold;">确认赠送并提交</div>
+                <div onclick="saveGive();" style="width: 100%;height: 54px;background: #41973c;text-align: center;line-height: 54px;color: #fff;margin-top: 20px;cursor: pointer;font-size: 15px;font-weight: bold;">确认</div>
                 <div id="dyTrue" onclick="printTrue();" style="width: 100%;height: 54px;background: #41973c;text-align: center;line-height: 54px;color: #fff;margin-top: 20px;cursor: pointer;font-size: 15px;font-weight: bold;">打印</div>
             </div>
         </div>
@@ -294,6 +295,7 @@
             $("#dyTrue").hide();
             $("#khSms").show();
             $("#jxsSms").show();
+            $("#giveStatuslabel").hide();
             $("#giveTitle").text("公司赠送");
         }else if(giveType=='3'){
             $("#khSms").val(jxszs1k+jxszs2k);
@@ -301,6 +303,7 @@
             $("#zssm").hide();
             $("#dyTrue").hide();
             $("#khSms").show();
+            $("#giveStatuslabel").hide();
             $("#jxsSms").show();
             $("#giveTitle").text("经销商赠送");
         }else if(giveType=='1'){
@@ -308,6 +311,7 @@
             $("#dyTrue").show();
             $("#khSms").hide();
             $("#jxsSms").hide();
+            $("#giveStatuslabel").show();
             $("#giveTitle").text("赠送给经销商");
         }
         $("#giveType").val(giveType);
@@ -405,6 +409,10 @@
             });
             if(!isGive){
                 layer.msg("该经销商今日已经赠送");
+                return false;
+            }
+            if($("#zssm").val()==""){
+                layer.msg("赠送状态必填");
                 return false;
             }
         }

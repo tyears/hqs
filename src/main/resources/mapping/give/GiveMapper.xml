@@ -83,7 +83,7 @@
             </if>
             <if test="giveTypeKD != null" >
                 <if test="giveTypeKD == 1" >
-                    and t.give_type = '1'
+                    and t.give_type = '1' and t.remark='1'
                 </if>
                 <if test="giveTypeKD != 1" >
                     and t.give_type != '1'
