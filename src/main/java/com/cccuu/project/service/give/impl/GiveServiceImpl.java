@@ -164,7 +164,16 @@ public class GiveServiceImpl extends BaseServiceImpl<Give> implements GiveServic
 					DealerProduct dealerProduct=new DealerProduct();
 					dealerProduct.setDealerId(give.getDealerId());
 					dealerProduct.setProductId(productIdArry[i]);
-					dealerProductService.addDP(dealerProduct,give.getGiveType());
+
+					if(give.getGiveType().equals("1")  ){
+						if(give.getRemark().trim().equals("1") )
+							dealerProductService.addDP(dealerProduct,give.getGiveType());
+					}
+					else
+					{
+						dealerProductService.addDP(dealerProduct,give.getGiveType());
+					}
+
 				}
 			}
 
