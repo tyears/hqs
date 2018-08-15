@@ -38,15 +38,15 @@
                                 <td class="new_wi05" onClick="zsjxOnclick('${product.productId}','${product.productNum} ${product.productName}');">H0000</td>
                             </c:if>
                             <c:if test="${not empty product.id}">
-                                <td class="new_wi05" onClick="layer.msg('没有经销商')">${product.notice_dealer}</td>
+                                <td class="new_wi05" onClick="layer.msg('没有经销商')">${product.notice_dealer1}</td>
                             </c:if>
                         </c:if>
                         <c:if test="${not empty product.notice_dealer}">
                             <c:if test="${product.notice_dealer=='H0000'}">
-                                <td class="new_wi05" onClick="zsjxOnclick('${product.productId}','${product.productNum} ${product.productName}');">${product.notice_dealer}</td>
+                                <td class="new_wi05" onClick="zsjxOnclick('${product.productId}','${product.productNum} ${product.productName}');">${product.notice_dealer1}</td>
                             </c:if>
                             <c:if test="${product.notice_dealer!='H0000'}">
-                                <td class="new_wi05" onClick="location.href='dealerPc/toDealerDetail.html?dealerId=${product.notice_dealer_id}'">${product.notice_dealer}</td>
+                                <td class="new_wi05" onClick="location.href='dealerPc/toDealerDetail.html?dealerId=${product.notice_dealer_id}'">${product.notice_dealer1}</td>
                             </c:if>
                         </c:if>
                         <c:if test="${empty product.give_dealer}">
