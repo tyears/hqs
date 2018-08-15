@@ -48,6 +48,7 @@
                                 <button class="chaxun" onclick="query()">查询</button>
                                 <button class="chongzhi" onclick="$('#keyword').val('')">重置</button>
                                 <button class="chaxun" onclick="location.href='order/toChangeRecord.html?dealerId=${dealer.id}&orderTel=${dealer.registerTel}'">客户详情</button>
+                                <button class="chaxun" onclick="historyGiveOnclick()">历史赠送</button>
                             </form>
                         </li>
                     </ul>
@@ -98,6 +99,57 @@
 </div>
 
 <!--弹窗-->
+<div class="lishizengsong" style="width: 570px; margin-top: 0; top: 36%; overflow: auto !important">
+    <div class="dxbox">
+        <div class="dtop">
+            <p>历史赠送</p>
+            <span></span>
+        </div>
+        <div class="bigbiaoge" style="width: 100%; padding: 25px; background: #fff;">
+            <div >
+                <table class="hov_mou" id="history_give">
+                    <tr>
+                        <th class="wh_01">日期</th>
+                        <th class="wh_02">赠送内容</th>
+                        <th class="wh_03">赠送情况</th>
+                        <th class="wh_04">操作员</th>
+                    </tr>
+                    <tr >
+                        <td class="wh_01">2018-08-13</td>
+                        <td class="wh_02">A201;A301</td>
+                        <td class="wh_03">拒收</td>
+                        <td class="wh_04">潘珊</td>
+                    </tr>
+                    <tr class="bg_hui">
+                        <td>2018-08-13</td>
+                        <td>A201;A301</td>
+                        <td>拒收</td>
+                        <td>潘珊</td>
+                    </tr>
+                    <tr>
+                        <td>2018-08-13</td>
+                        <td>A201;A301</td>
+                        <td>拒收</td>
+                        <td>潘珊</td>
+                    </tr>
+                    <tr class="bg_hui">
+                        <td>2018-08-13</td>
+                        <td>A201;A301</td>
+                        <td>拒收</td>
+                        <td>潘珊</td>
+                    </tr>
+                    <tr >
+                        <td>2018-08-13</td>
+                        <td>A201;A301</td>
+                        <td>拒收</td>
+                        <td>潘珊</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="heibg"></div>
 <div class="duanxintanchuang tztanchuang a3">
     <div class="dxbox">
@@ -209,6 +261,10 @@
             $(".caozuojilu").slideUp();
             $(".heibg").fadeOut();
         })
+        $(".lishizengsong .dtop span,.heibg").click(function () {
+            $(".lishizengsong").slideUp();
+            $(".heibg").fadeOut();
+        })
     })
     function addRecord() {
         var content=$("#contentJL").val();
@@ -261,6 +317,10 @@
     var jxszs2j='，我们告知客户您可免费提供1袋产品试用，请您联系客户。';
     var jxszs1k='已通知${area.areaName}经销商${dealer.name}${dealer.registerTel}给您免费提供';
     var jxszs2k='试用，如有问题请联系我们。';
+    function historyGiveOnclick(){
+        $(".lishizengsong").slideDown();
+        $(".heibg").fadeIn();
+    }
     function zsjxOnclick(giveType) {
         if("2"==giveType || "3"==giveType){
             var id="${info.id}";

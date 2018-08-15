@@ -81,6 +81,27 @@
 .dongdaibox .dongtai .dbox .bigbiaoge table tr th b{ color:#ed3e3e}
 .dongdaibox .dongtai .dbox .bigbiaoge table tr td{border:1px solid #ededed; color:#444; text-align:center; color:#555;}
 .dongdaibox .dongtai .dbox .bigbiaoge table tr td b{ color:#41973c}
+
+
+.lishizengsong .bigbiaoge{ width:100%; margin-top:0px;}
+.lishizengsong .bigbiaoge table tr.bg_hui{ background-color:#f5f5f5}
+.lishizengsong .bigbiaoge.deta{ margin-top:0}
+.lishizengsong .bigbiaoge table{border-collapse:collapse;width:100%; border:1px solid #ededed;}
+.lishizengsong .bigbiaoge table:last-child{ position:relative; top:-1px;}
+.lishizengsong .bigbiaoge table tr{border:1px solid #ededed;}
+.lishizengsong .bigbiaoge table tr.gaoliang{ background-color:#fffdf0}
+.lishizengsong .bigbiaoge table tr.gaoliang td{ color:red;}
+.lishizengsong .bigbiaoge table tr th{border:1px solid #ededed; padding:10px 0; text-align:center; background-color:#f5f5f5; color:#555; cursor:pointer;}
+.lishizengsong .bigbiaoge table tr td{word-break:break-all;}
+.lishizengsong .bigbiaoge table tr .ww1{ width:16%; }
+.lishizengsong .bigbiaoge table tr .ww2{ width:52%;}
+.lishizengsong .bigbiaoge table tr .ww3{ width:16%;}
+.lishizengsong .bigbiaoge table tr .ww3{ width:16%;}
+
+.lishizengsong .bigbiaoge table tr th b{ color:#ed3e3e}
+.lishizengsong .bigbiaoge table tr td{border:1px solid #ededed; color:#444; text-align:center; color:#555;padding:10px 0;}
+.lishizengsong .bigbiaoge table tr td b{ color:#41973c}
+
 /*.dongdaibox .dongtai .dbox .bigbiaoge table tr:hover{ background-color:#41973c;color:#fff;}
 .dongdaibox .dongtai .dbox .bigbiaoge table tr:hover td{ background-color:#41973c; color:#fff;}*/
 

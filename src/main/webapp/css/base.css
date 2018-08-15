@@ -134,6 +134,11 @@ input,button,textarea,select{font-family:"Microsoft YaHei";outline:none;}
 .caozuojilu .dtop p{ float:left; background:url(../images/baisanjiao.png) no-repeat left center; padding-left:15px; color:#fff; line-height:54px;}
 .caozuojilu .dtop span{ display:block; float:right; background:url(../images/xx.png) no-repeat center center; width:24px; height:24px; background-size:10px 10px; cursor:pointer; margin-top:15px;}
 
+.lishizengsong{width:440px; margin:0 auto; position:fixed; z-index:121; left:50%; top:50%; margin-left:-220px; height:507px; margin-top:-253px; display:none;}
+.lishizengsong .dtop{ overflow:hidden; height:54px; background-color:#41973c; padding:0 15px;}
+.lishizengsong .dtop p{ float:left; background:url(../images/baisanjiao.png) no-repeat left center; padding-left:15px; color:#fff; line-height:54px;}
+.lishizengsong .dtop span{ display:block; float:right; background:url(../images/xx.png) no-repeat center center; width:24px; height:24px; background-size:10px 10px; cursor:pointer; margin-top:15px;}
+
 
 
 .duanxintanchuang .dxbox .biao{ width: 100%; background-color:#fff; padding:20px;}
