@@ -81,7 +81,7 @@
                                                         <td class="new_wi02">${product.productName}</td>
                                                         <td class="new_wi03">${product.author_dealer}</td>
                                                         <td class="new_wi04">${product.comment}</td>
-                                                        <td class="new_wi05" id="gs${product.productId}" onClick="updateNotice('${product.id}','${product.productId}')">${not empty product.id?product.notice_dealer1:'H0000'}</td>
+                                                        <td class="new_wi05" id="gs${product.productId}" onClick="updateNotice('${product.id}','${product.productId}')">${not empty product.id?product.notice_dealer:'H0000'}</td>
                                                         <td class="new_wi06" id="jss${product.productId}">${product.give_dealer}</td>
                                                         <td class="new_wi07">
                                                             <input readonly style="text-align:center;border-style:none; ${product.effect_time.getTime() - now.getTime() - 15*24*60*60*1000 < 0 ? 'color:red;' : ''}" type="text" id="${product.productId}" apid="${product.id}"  value='<fmt:formatDate value="${product.effect_time}" pattern="yyyy-MM-dd"/>'>

@@ -19,7 +19,7 @@
     <td class="wh_09">${data.comment}</td>
     <td class="wh_10"><fmt:formatDate value="${data.last_purchase_time}" pattern="yyyy-MM-dd"/> </td>
     <td class="wh_11">${data.author_dealer}</td>
-    <td class="wh_12">${not empty data.apId?data.notice_dealer1:'H0000'}</td>
+    <td class="wh_12">${not empty data.apId?data.notice_dealer:'H0000'}</td>
     <td class="wh_13">${data.give_dealer}</td>
     <td class="wh_14" ${data.effect_time.getTime() - nowDate.getTime() - 15*24*60*60*1000 < 0 ? 'style="color: red"' : ''}><fmt:formatDate value="${data.effect_time}" pattern="yyyy-MM-dd"/> </td>
     <td class="wh_15">${data.remark}</td>
