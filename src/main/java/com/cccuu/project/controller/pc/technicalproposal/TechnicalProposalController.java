@@ -312,10 +312,10 @@ public class TechnicalProposalController extends BaseController {
 			List<Object[]> titleList = new ArrayList<>();
 			List<Object[]> dataList = new ArrayList<>();
 			if ("6".equals(cType)){
-				Object[] title = new Object[]{"序号","经销商手机号","经销商编号","日期","姓名","手机号码","咨询产品","宣传产品","地址","操作方案"};
+				Object[] title = new Object[]{"序号","经销商手机号","经销商编号","日期","姓名","手机号码","咨询产品","宣传产品","地址","操作方案","操作员"};
 				titleList.add(title);
 				for (int i = 0; i <result.size() ; i++) {
-					Object[] obj = new Object[10];
+					Object[] obj = new Object[11];
 					obj[0]=i+1;
 					String numArry= (String) result.get(i).get("give_content");
 					String dealerId= (String) result.get(i).get("dealer_id");
@@ -347,13 +347,14 @@ public class TechnicalProposalController extends BaseController {
 						obj[7]=numArry;
 					}
 					obj[8]=result.get(i).get("address");
+					obj[10]=result.get(i).get("transfer_man_name");
 					dataList.add(obj);
 				}
 			}else {
-				Object[] title = new Object[]{"序号","最近联系日期","单位市场","客户类型","手机号码","姓名","地址","咨询产品","宣传产品"};
+				Object[] title = new Object[]{"序号","最近联系日期","单位市场","客户类型","手机号码","姓名","地址","咨询产品","宣传产品","操作员"};
 				titleList.add(title);
 				for (int i = 0; i <result.size() ; i++) {
-					Object[] obj = new Object[9];
+					Object[] obj = new Object[10];
 					obj[0]=i+1;
 					obj[1]=result.get(i).get("import_time");
 					if(null != obj[1] && "" != obj[1]){
@@ -376,6 +377,7 @@ public class TechnicalProposalController extends BaseController {
 //						obj[8]=numArry;
 //					}
 					obj[8]=numArry;
+					obj[9]=result.get(i).get("transfer_man_name");
 					dataList.add(obj);
 				}
 			}
