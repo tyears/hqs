@@ -89,4 +89,5 @@ public interface DealerService extends BaseService<Dealer>{
 	 * @return
 	 */
 	public List<Dealer> queryListByMapDouble(Map<String,String> params);
+	public void updateDealerMerit();
 }

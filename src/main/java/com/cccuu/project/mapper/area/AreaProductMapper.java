@@ -113,4 +113,6 @@ public interface AreaProductMapper extends BaseMapper<AreaProduct>{
     public void updateAuthorImport();
 
     public void emptyAuthorDealer();
+
+    public void emptyAreaProductMerit();
 }

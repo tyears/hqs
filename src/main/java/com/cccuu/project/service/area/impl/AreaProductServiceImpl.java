@@ -120,6 +120,7 @@ public class AreaProductServiceImpl extends BaseServiceImpl<AreaProduct> impleme
 		areaProductMapper.updateAuthor(params);
 	}
 	public void emptyAuthorDealer(){areaProductMapper.emptyAuthorDealer();}
+	public void emptyAreaProductMerit(){areaProductMapper.emptyAreaProductMerit();}
 
 	@Override
 	@Transactional

@@ -239,4 +239,8 @@
     <update id="emptyAuthorDealer">
         UPDATE t_area_product set author_dealer=NULL
     </update>
+
+    <update id="emptyAreaProductMerit">
+        UPDATE t_area_product set comment=NULL
+    </update>
 </mapper>

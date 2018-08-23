@@ -311,4 +311,8 @@ public class DealerServiceImpl extends BaseServiceImpl<Dealer> implements Dealer
 	public List<Dealer> queryListByMapDouble(Map<String, String> params) {
 		return dealerMapper.queryListByMapDouble(params);
 	}
+
+	public void updateDealerMerit(){
+		dealerMapper.updateDealerMerit();
+	}
 }

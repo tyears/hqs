@@ -62,4 +62,5 @@ public interface AreaService extends BaseService<Area>{
 	 * @return
 	 */
 	public int addMulti(List<Area> list);
+	public void updateAreaMerit();
 }

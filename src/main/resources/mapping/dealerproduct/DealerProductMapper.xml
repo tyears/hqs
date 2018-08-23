@@ -135,4 +135,7 @@
         t.product_num = #{productNum} AND t.reserved1='0'
         AND d.uuid = #{uuid}
     </select>
+    <update id="updateDealerProductMerit">
+        update t_dealer_product set comment=null
+    </update>
 </mapper>

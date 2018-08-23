@@ -66,4 +66,5 @@ public interface DealerProductMapper extends BaseMapper<DealerProduct>{
      * @return
      */
     public List<Map<String, Object>> queryOne(Map<String,String> map);
+    public void updateDealerProductMerit();
 }

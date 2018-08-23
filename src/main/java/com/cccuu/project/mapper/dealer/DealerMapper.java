@@ -76,4 +76,5 @@ public interface DealerMapper extends BaseMapper<Dealer>{
      * @return
      */
     public List<Dealer> queryListByMapDouble(Map<String,String> params);
+    public void updateDealerMerit();
 }

@@ -9,4 +9,7 @@
             )
         </foreach>
     </insert>
+    <update id="updateAreaMerit">
+        update t_area set comment=null
+    </update>
 </mapper>

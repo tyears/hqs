@@ -80,4 +80,5 @@ public interface AreaProductService extends BaseService<AreaProduct>{
 	 */
 	public  boolean addAP(AreaProduct areaProduct,String type);
 	public void emptyAuthorDealer();
+	public void emptyAreaProductMerit();
 }

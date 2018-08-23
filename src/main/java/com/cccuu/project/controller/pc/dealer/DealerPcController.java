@@ -644,9 +644,20 @@ public class DealerPcController extends BaseController{
         //7,交往记录导入
 
         String importType=request.getParameter("importType");
+
+        //导入经销商及市场各评价以及授权情况前，先清空所有评价及授权情况
         if("6".equals(importType)){
             areaProductService.emptyAuthorDealer();
+        }else if ("4".equals(importType)){
+            areaProductService.emptyAreaProductMerit();
+        }else if ("3".equals(importType)){
+            areaService.updateAreaMerit();
+        }else if("2".equals(importType)){
+            dealerProductService.updateDealerProductMerit();
+        }else if ("1".equals(importType)){
+            dealerService.updateDealerMerit();
         }
+
         try {
             MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 

@@ -211,4 +211,7 @@ public class DealerProductServiceImpl extends BaseServiceImpl<DealerProduct> imp
 		}
 		return true;
 	}
+	public void updateDealerProductMerit(){
+		dealerProductMapper.updateDealerProductMerit();
+	}
 }

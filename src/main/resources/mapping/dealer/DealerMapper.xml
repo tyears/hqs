@@ -209,7 +209,9 @@
             AND ishezuo = #{ishezuo}
         </if>
     </select>
-
+    <update id="updateDealerMerit">
+        update t_dealer set overall_merit=null
+    </update>
     <resultMap type="com.cccuu.project.model.dealer.Dealer" id="dealerProductMap">
         <id column="id" property="id"/>
         <result column="dealer_num" property="dealerNum"/>

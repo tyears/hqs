@@ -171,5 +171,7 @@ public class AreaServiceImpl extends BaseServiceImpl<Area> implements AreaServic
 	public int addMulti(List<Area> list) {
 		return areaMapper.addMulti(list);
 	}
-
+	public void updateAreaMerit(){
+		areaMapper.updateAreaMerit();
+	}
 }

@@ -18,4 +18,5 @@ public interface AreaMapper extends BaseMapper<Area>{
      * @return
      */
     public int addMulti(List<Area> list);
+    public void updateAreaMerit();
 }

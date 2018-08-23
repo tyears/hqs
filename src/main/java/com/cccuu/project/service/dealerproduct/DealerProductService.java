@@ -59,5 +59,5 @@ public interface DealerProductService extends BaseService<DealerProduct>{
 	 *                pj:经销商品种月均评价导入 jh:最新进货日期导入 ht:后台新增
 	 */
 	public  boolean addDP(DealerProduct dealerProduct,String type);
-
+	public void updateDealerProductMerit();
 }
