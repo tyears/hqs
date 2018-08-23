@@ -315,4 +315,9 @@ public class DealerServiceImpl extends BaseServiceImpl<Dealer> implements Dealer
 	public void updateDealerMerit(){
 		dealerMapper.updateDealerMerit();
 	}
+	@Override
+	@Transactional
+	public List<Map<String,Object>> historyGiveByDealerId(String dealerID){
+		return dealerMapper.historyGiveByDealerId(dealerID);
+	}
 }

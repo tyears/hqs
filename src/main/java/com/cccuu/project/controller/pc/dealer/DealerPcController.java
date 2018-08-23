@@ -904,4 +904,20 @@ public class DealerPcController extends BaseController{
         }
         writeJson(response, returnInfo);
     }
+    @RequestMapping("historyGive.html")
+    public void getHistoryGive(HttpServletRequest request,HttpServletResponse response){
+        ReturnInfo returnInfo = new ReturnInfo();
+        try {
+            String dealerId=request.getParameter("dealerId");
+            List<Map<String,Object>> historyGives=dealerService.historyGiveByDealerId(dealerId);
+            returnInfo.setObj(historyGives);
+            returnInfo.setResult(true);
+            //returnInfo.setMsg("查询成功");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        writeJson(response, returnInfo);
+    }
+
 }
+

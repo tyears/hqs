@@ -77,4 +77,5 @@ public interface DealerMapper extends BaseMapper<Dealer>{
      */
     public List<Dealer> queryListByMapDouble(Map<String,String> params);
     public void updateDealerMerit();
+    public List<Map<String,Object>> historyGiveByDealerId(String dealerID);
 }

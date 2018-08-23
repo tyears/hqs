@@ -99,52 +99,14 @@
 </div>
 
 <!--弹窗-->
-<div class="lishizengsong" style="width: 570px; margin-top: 0; top: 36%; overflow: auto !important">
+<div class="lishizengsong" style="width: 800px; margin-top: 0; top: 36%; overflow: auto !important">
     <div class="dxbox">
         <div class="dtop">
             <p>历史赠送</p>
             <span></span>
         </div>
         <div class="bigbiaoge" style="width: 100%; padding: 25px; background: #fff;">
-            <div >
-                <table class="hov_mou" id="history_give">
-                    <tr>
-                        <th class="wh_01">日期</th>
-                        <th class="wh_02">赠送内容</th>
-                        <th class="wh_03">赠送情况</th>
-                        <th class="wh_04">操作员</th>
-                    </tr>
-                    <tr >
-                        <td class="wh_01">2018-08-13</td>
-                        <td class="wh_02">A201;A301</td>
-                        <td class="wh_03">拒收</td>
-                        <td class="wh_04">潘珊</td>
-                    </tr>
-                    <tr class="bg_hui">
-                        <td>2018-08-13</td>
-                        <td>A201;A301</td>
-                        <td>拒收</td>
-                        <td>潘珊</td>
-                    </tr>
-                    <tr>
-                        <td>2018-08-13</td>
-                        <td>A201;A301</td>
-                        <td>拒收</td>
-                        <td>潘珊</td>
-                    </tr>
-                    <tr class="bg_hui">
-                        <td>2018-08-13</td>
-                        <td>A201;A301</td>
-                        <td>拒收</td>
-                        <td>潘珊</td>
-                    </tr>
-                    <tr >
-                        <td>2018-08-13</td>
-                        <td>A201;A301</td>
-                        <td>拒收</td>
-                        <td>潘珊</td>
-                    </tr>
-                </table>
+            <div id="historyGive">
             </div>
         </div>
     </div>
@@ -320,6 +282,46 @@
     function historyGiveOnclick(){
         $(".lishizengsong").slideDown();
         $(".heibg").fadeIn();
+        var dealerId="${dealer.id}";
+        $.ajax({
+            url:"<%=basePath%>dealerPc/historyGive.html",
+            type:"post",
+            dataType:"json",
+            async: true,
+            data:{dealerId:dealerId},
+            success: function (data) {
+                if (data.result) {
+                    var html = '';
+                    html+='<table class="hov_mou" id="history_give">';
+                    html+='<tr>';
+                    html+='<th class="wh_01">日期</th>';
+                    html+='<th class="wh_02">赠送内容</th>';
+                    html+='<th class="wh_03">赠送情况</th>';
+                    html+='<th class="wh_04">操作员</th>';
+                    html+='</tr>';
+                    for(var p in data.obj) {
+                        html+='<tr>';
+                        html+='<td>'+data.obj[p].give_time+'</td>';
+                        html+='<td>'+data.obj[p].give_content+'</td>';
+                        html+='<td>'+data.obj[p].give_status_name+'</td>';
+                        html+='<td>'+data.obj[p].give_man_name+'</td>';
+                        html+='</tr>';
+                    }
+                    html+='</table>';
+                    $("#historyGive").html(html);
+                } else {
+                    return false;
+                }
+                /*if(data.obj.list.length>5){
+                 $("#bix").css({"overflow":"auto","overflow-x":"scroll"})
+                 }else if(data.obj.list.length<=5){
+                 $("#bix").css({"overflow":"auto","overflow-x":"visible"})
+                 }*/
+            },
+            error: function () {
+                layer.alert("提示：系统内部出现问题！");
+            }
+        });
     }
     function zsjxOnclick(giveType) {
         if("2"==giveType || "3"==giveType){
