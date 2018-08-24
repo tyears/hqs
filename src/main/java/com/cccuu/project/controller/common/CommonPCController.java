@@ -555,6 +555,10 @@ public class CommonPCController extends BaseController {
                     qDealer.setRemark(dealer.getRemark());
                     qDealer.setPostalAddress(dealer.getPostalAddress());
                     qDealer.setOtherTel(dealer.getOtherTel());
+                    qDealer.setDistrictId((String) mapList.get(0).get("id"));
+                    qDealer.setCityId((String) mapList.get(0).get("fkId"));
+                    qDealer.setProvinceId((String) mapList.get(0).get("ffkId"));
+                    qDealer.setDealerType(dealer.getDealerType());
                     dealerService.update(qDealer);
                 }else {
                     dealer.setReserved1("0");
