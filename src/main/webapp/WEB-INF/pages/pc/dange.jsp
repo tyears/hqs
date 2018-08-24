@@ -48,7 +48,7 @@
                                 <button class="chaxun" onclick="query()">查询</button>
                                 <button class="chongzhi" onclick="$('#keyword').val('')">重置</button>
                                 <button class="chaxun" onclick="location.href='order/toChangeRecord.html?dealerId=${dealer.id}&orderTel=${dealer.registerTel}'">客户详情</button>
-                                <button class="chaxun" onclick="historyGiveOnclick()">历史赠送</button>
+                                <button class="chaxun" onclick="historyGiveOnclick()">历史宣传</button>
                             </form>
                         </li>
                     </ul>
@@ -65,17 +65,17 @@
                             <tr>
                                 <th class="wh_01" onclick="changeSort();">货号</th>
                                 <th class="wh_02">品名</th>
-                                <%--<th class="wh_03">赠送件数</th>--%>
-                                <th class="wh_04">第一次赠送</th>
-                                <th class="wh_05">最后赠送</th>
+                                <%--<th class="wh_03">宣传件数</th>--%>
+                                <th class="wh_04">第一次宣传</th>
+                                <th class="wh_05">最后宣传</th>
                                 <th class="wh_06">经销商宣传</th>
-                                <th class="wh_07">公司赠送</th>
+                                <th class="wh_07">公司宣传</th>
                                 <th class="wh_08">通知信息数</th>
                                 <th class="wh_09">评价</th>
                                 <th class="wh_10">最后进货</th>
                                 <th class="wh_11">授权</th>
                                 <th class="wh_12">公司通知</th>
-                                <th class="wh_13">经销商赠送</th>
+                                <th class="wh_13">经销商宣传</th>
                                 <th class="wh_14">有效时间</th>
                                 <th class="wh_15">备注</th>
                                 <%--<th class="wh_16"><a>全选</a><input id="all" type="checkbox"></th>--%>
@@ -85,9 +85,9 @@
                     <div class="over_flow_01"id="mainContent"></div>
                     <div class="btnbox btnbox1">
                         <div class="right_bt">
-                            <button id="zsjx" onclick="zsjxOnclick('1')">赠送给经销商</button>
-                            <button id="zsgs" onclick="zsjxOnclick('2');">公司赠送</button>
-                            <button id="zskh" onclick="zsjxOnclick('3');">经销商赠送</button>
+                            <button id="zsjx" onclick="zsjxOnclick('1')">宣传给经销商</button>
+                            <button id="zsgs" onclick="zsjxOnclick('2');">公司宣传</button>
+                            <button id="zskh" onclick="zsjxOnclick('3');">经销商宣传</button>
                             <button id="czjl">操作记录</button>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
 <div class="lishizengsong" style="width: 800px; margin-top: 0; top: 36%; overflow: auto !important">
     <div class="dxbox">
         <div class="dtop">
-            <p>历史赠送</p>
+            <p>历史宣传</p>
             <span></span>
         </div>
         <div class="bigbiaoge" style="width: 100%; padding: 25px; background: #fff;">
@@ -134,7 +134,7 @@
     <input id="giveId" type="hidden"/>
     <div class="dxbox">
         <div class="dtop">
-            <p id="giveTitle">赠送给经销商</p>
+            <p id="giveTitle">宣传给经销商</p>
             <span></span>
         </div>
         <div style="max-height:670px; overflow-y:auto">
@@ -149,7 +149,7 @@
                 <h3 class="tianjia" onclick="addTr();">添加一个产品</h3>
             </div>
             <div class="ddmidd zssma">
-                <div id="giveStatuslabel">赠送状态：</div>
+                <div id="giveStatuslabel">宣传状态：</div>
                 <textarea rows="7" placeholder=" 1:成功 &#10 2:拒收 &#10 3:无人接听 &#10 4:挂断 &#10 5:改行 &#10 6:空号 &#10 7:其他" id="zssm" class="smsStyle"></textarea>
                 <textarea rows="4" placeholder="给客户发短信：" id="khSms" class="smsStyle" ></textarea>
                 <textarea rows="4" placeholder="给经销商发短信：" id="jxsSms" class="smsStyle" ></textarea>
@@ -163,14 +163,14 @@
 <div class="duanxintanchuang tztanchuang a2">
     <div class="dxbox">
         <div class="dtop">
-            <p>经销商赠送</p>
+            <p>经销商宣传</p>
             <span></span>
         </div>
         <div style="max-height:480px; overflow-y:auto">
             <div class="biao">
                 <table>
                     <tr>
-                        <th>赠送产品</th>
+                        <th>宣传产品</th>
                         <th>数量</th>
                     </tr>
                     <tr>
@@ -194,7 +194,7 @@
                 <div class="dmidd zssm zsx" contenteditable="true">
                     给经销商发短信：
                 </div>
-                <div class="d_bt">确认赠送并短信告知</div>
+                <div class="d_bt">确认宣传并短信告知</div>
             </div>
         </div>
     </div>
@@ -295,8 +295,8 @@
                     html+='<table class="hov_mou" id="history_give">';
                     html+='<tr>';
                     html+='<th class="wh_01">日期</th>';
-                    html+='<th class="wh_02">赠送内容</th>';
-                    html+='<th class="wh_03">赠送情况</th>';
+                    html+='<th class="wh_02">宣传内容</th>';
+                    html+='<th class="wh_03">宣传情况</th>';
                     html+='<th class="wh_04">操作员</th>';
                     html+='</tr>';
                     for(var p in data.obj) {
@@ -358,7 +358,7 @@
             $("#khSms").show();
             $("#jxsSms").show();
             $("#giveStatuslabel").hide();
-            $("#giveTitle").text("公司赠送");
+            $("#giveTitle").text("公司宣传");
         }else if(giveType=='3'){
             $("#khSms").val(jxszs1k+jxszs2k);
             $("#jxsSms").val(jxszs1j+jxszs2j);
@@ -367,14 +367,14 @@
             $("#khSms").show();
             $("#giveStatuslabel").hide();
             $("#jxsSms").show();
-            $("#giveTitle").text("经销商赠送");
+            $("#giveTitle").text("经销商宣传");
         }else if(giveType=='1'){
             $("#zssm").show();
             $("#dyTrue").show();
             $("#khSms").hide();
             $("#jxsSms").hide();
             $("#giveStatuslabel").show();
-            $("#giveTitle").text("赠送给经销商");
+            $("#giveTitle").text("宣传给经销商");
         }
         $("#giveType").val(giveType);
         $("#giveId").val("");
@@ -470,11 +470,11 @@
                 }
             });
             if(!isGive){
-                layer.msg("该经销商今日已经赠送");
+                layer.msg("该经销商今日已经宣传");
                 return false;
             }
             if($("#zssm").val()==""){
-                layer.msg("赠送状态必填");
+                layer.msg("宣传状态必填");
                 return false;
             }
         }

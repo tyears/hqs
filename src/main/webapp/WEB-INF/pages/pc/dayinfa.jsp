@@ -50,8 +50,8 @@
                             <th>手机号码</th>
                             <th>姓名</th>
                             <th>名称</th>
-                            <th>赠送产品内容</th>
-                            <th>赠送说明</th>
+                            <th>宣传产品内容</th>
+                            <th>宣传说明</th>
                             <th>总评价</th>
                             <th>合作情况</th>
                             <th>操作员</th>
@@ -130,7 +130,7 @@
 <div class="duanxintanchuang tztanchuang a1">
     <div class="dxbox">
         <div class="dtop">
-            <p>赠送产品</p>
+            <p>宣传产品</p>
             <span></span>
         </div>
         <div style="max-height:480px; overflow-y:auto">
@@ -160,7 +160,7 @@
                 <h3 class="tianjia">添加一个产品</h3>
             </div>
             <div class="ddmidd zssma">
-                <div class="d_bt d_bt_01">确认赠送</div>
+                <div class="d_bt d_bt_01">确认宣传</div>
             </div>
         </div>
     </div>
@@ -218,7 +218,7 @@
     })
 
     $(function(){
-        /*产品赠送添加*/
+        /*产品宣传添加*/
 
         $(".zs_btn").click(function(){
             $(".heibg").fadeIn();

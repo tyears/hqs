@@ -27,7 +27,7 @@
 <body>
 
 <div class="dongdaibox">
-    <div class="biaoti"><div><span></span><b>经销商赠送审查</b></div><h6>
+    <div class="biaoti"><div><span></span><b>经销商宣传审查</b></div><h6>
         <form id="queryForm" action="givePc/toGiveExamine.html" method="post">
             <input type="hidden" id="pageNum" name="pageNum" value="1"/>
             <input type="hidden" id="pageSize" name="pageSize" value="${pageInfo.pageSize}"/>
@@ -60,8 +60,8 @@
                             <th>手机号码</th>
                             <th>姓名</th>
                             <th>名称</th>
-                            <th>赠送产品内容</th>
-                            <th>赠送说明</th>
+                            <th>宣传产品内容</th>
+                            <th>宣传说明</th>
                             <th>总评价</th>
                             <th>合作情况</th>
                             <th>操作员</th>
@@ -147,7 +147,7 @@
     <input type="hidden" id="dealerId"/>
     <div class="dxbox">
         <div class="dtop">
-            <p>赠送给经销商</p>
+            <p>宣传给经销商</p>
             <span></span>
         </div>
         <div style="max-height:480px; overflow-y:auto">
@@ -163,7 +163,7 @@
                 <h3 class="tianjia" onclick="addTr();">添加一个产品</h3>
             </div>
             <div class="ddmidd zssma">
-                <div onclick="saveGive();" style="width: 100%;height: 54px;background: #41973c;text-align: center;line-height: 54px;color: #fff;cursor: pointer;font-size: 15px;font-weight: bold;">确认赠送并提交</div>
+                <div onclick="saveGive();" style="width: 100%;height: 54px;background: #41973c;text-align: center;line-height: 54px;color: #fff;cursor: pointer;font-size: 15px;font-weight: bold;">确认宣传并提交</div>
             </div>
         </div>
     </div>
@@ -402,7 +402,7 @@
         trNum += 1;
     }
 
-    /*产品赠送添加*/
+    /*产品宣传添加*/
     function showZSCP(giveId,dealerId){
         $.ajax({
             url:"<%=basePath%>givePc/queryGiveProduct.html",

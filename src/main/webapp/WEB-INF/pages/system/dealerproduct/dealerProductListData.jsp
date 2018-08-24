@@ -7,10 +7,10 @@
 		<tr class="text-c">
 			<th width="10%">货号</th>
 			<th width="15%">产品信息</th>
-			<th width="10%">第一次赠送</th>
-			<th width="10%">最后赠送</th>
-			<th width="5%">经销商赠送</th>
-			<th width="5%">公司赠送</th>
+			<th width="10%">第一次宣传</th>
+			<th width="10%">最后宣传</th>
+			<th width="5%">经销商宣传</th>
+			<th width="5%">公司宣传</th>
 			<th width="5%">评价</th>
 			<th width="10%">最后进货</th>
 			<th width="10%">确定月数</th>

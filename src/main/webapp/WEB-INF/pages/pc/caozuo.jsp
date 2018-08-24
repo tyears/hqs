@@ -52,9 +52,9 @@
                                 <option ${empty params.cType?'selected':''} value="">操作方案</option>
                                 <option ${params.cType=='0'?'selected':''} value="0">咨询</option>
                                 <option ${params.cType=='1'?'selected':''} value="1">咨询并通知</option>
-                                <option ${params.cType=='2'?'selected':''} value="2">公司赠送</option>
-                                <option ${params.cType=='3'?'selected':''} value="3">公司赠送并通知</option>
-                                <option ${params.cType=='4'?'selected':''} value="4">经销商赠送</option>
+                                <option ${params.cType=='2'?'selected':''} value="2">公司宣传</option>
+                                <option ${params.cType=='3'?'selected':''} value="3">公司宣传并通知</option>
+                                <option ${params.cType=='4'?'selected':''} value="4">经销商宣传</option>
                                 <option ${params.cType=='5'?'selected':''} value="5">其他</option>
                                 <option ${params.cType=='6'?'selected':''} value="6">通知经销商</option>
                             </select>
@@ -107,14 +107,14 @@
                                 <td>${data.transfer_man_name}</td>
                                 <td>
                                     <c:choose>
-                                        <c:when test="${data.give_type=='3'}">经销商赠送</c:when>
+                                        <c:when test="${data.give_type=='3'}">经销商宣传</c:when>
                                         <c:when test="${data.give_type=='2'}">
                                             <c:choose>
-                                                <c:when test="${not empty data.dealer_id}">公司赠送并通知</c:when>
-                                                <c:otherwise>公司赠送
+                                                <c:when test="${not empty data.dealer_id}">公司宣传并通知</c:when>
+                                                <c:otherwise>公司宣传
                                                     <%--<c:choose>--%>
                                                         <%--<c:when test="${not empty data.consult_dealer_id}">咨询并通知</c:when>--%>
-                                                        <%--<c:otherwise>公司赠送</c:otherwise>--%>
+                                                        <%--<c:otherwise>公司宣传</c:otherwise>--%>
                                                     <%--</c:choose>--%>
                                                 </c:otherwise>
                                             </c:choose>

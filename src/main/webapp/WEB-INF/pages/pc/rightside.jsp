@@ -142,7 +142,7 @@
                     <li><a target="left" href="givePc/toConsultInfo.html">咨询信息下载</a></li>
                 </user:rights>
                 <%--<user:rights funCode="Fun_ZSSH">--%>
-                    <%--<li><a target="left" href="givePc/toGiveExamine.html">赠送审核</a></li>--%>
+                    <%--<li><a target="left" href="givePc/toGiveExamine.html">宣传审核</a></li>--%>
                 <%--</user:rights>--%>
                 <%--<user:rights funCode="Fun_DYFHD">--%>
                     <%--<li><a target="left" href="givePc/toPrintInvoice.html">打印发货单</a></li>--%>

@@ -15,7 +15,7 @@
             <tr>
                 <th class="wh_01 " onclick="changeSortOne();">货号</th>
                 <th class="wh_02">品名</th>
-                <%--<th class="wh_03">赠送件数</th>--%>
+                <%--<th class="wh_03">宣传件数</th>--%>
                 <th class="wh_04">第一次宣传</th>
                 <th class="wh_05">最后宣传</th>
                 <th class="wh_06">经销商宣传</th>

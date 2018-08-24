@@ -10,7 +10,7 @@
 			<th width="10%">授权</th>
 			<th width="10%">市场评价</th>
 			<th width="10%">公司通知</th>
-			<th width="10%">经销商赠送</th>
+			<th width="10%">经销商宣传</th>
 			<th width="15%">有效时间</th>
 			<th width="18%">操作</th>
 		</tr>

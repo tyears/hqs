@@ -24,7 +24,7 @@
                     <c:if test="${data.dealer_type==4}">其他</c:if>
                 </td>
             </c:if>
-            <td class="ww6">${data.give_type==1?'赠给经销商':data.give_type==2?'公司赠送':'经销商赠送'}</td>
+            <td class="ww6">${data.give_type==1?'赠给经销商':data.give_type==2?'公司宣传':'经销商宣传'}</td>
             <td class="ww7" style="width: 6%"><fmt:formatDate value="${data.create_time}" pattern="yyyy-MM-dd"/></td>
             <td class="ww8" style="cursor: pointer;">${data.goods_num}</td>
             <td class="ww9">${data.give_man_name}</td>

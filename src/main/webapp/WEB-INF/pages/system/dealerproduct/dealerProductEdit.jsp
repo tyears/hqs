@@ -43,33 +43,33 @@
 			</div>
 		</div>
 	<%--<div class="row cl">--%>
-		<%--<label class="form-label col-xs-4 col-sm-3">赠送件数：</label>--%>
+		<%--<label class="form-label col-xs-4 col-sm-3">宣传件数：</label>--%>
 		<%--<div class="formControls col-xs-8 col-sm-9">--%>
-			<%--<input type="text" class="input-text" autocomplete="off" placeholder="赠送件数" id="giveNum" name="giveNum" value="${info.giveNum}"/>--%>
+			<%--<input type="text" class="input-text" autocomplete="off" placeholder="宣传件数" id="giveNum" name="giveNum" value="${info.giveNum}"/>--%>
 		<%--</div>--%>
 	<%--</div>--%>
 	<%--<div class="row cl">--%>
-		<%--<label class="form-label col-xs-4 col-sm-3">第一次赠送：</label>--%>
+		<%--<label class="form-label col-xs-4 col-sm-3">第一次宣传：</label>--%>
 		<%--<div class="formControls col-xs-8 col-sm-9">--%>
-			<%--<input type="text" class="input-text Wdate" style="height:31px;" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" autocomplete="off" placeholder="第一次赠送" id="firstTime" name="firstTime" value="<fmt:formatDate value="${info.firstTime}" pattern="yyyy-MM-dd"/>"/>--%>
+			<%--<input type="text" class="input-text Wdate" style="height:31px;" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" autocomplete="off" placeholder="第一次宣传" id="firstTime" name="firstTime" value="<fmt:formatDate value="${info.firstTime}" pattern="yyyy-MM-dd"/>"/>--%>
 		<%--</div>--%>
 	<%--</div>--%>
 	<%--<div class="row cl">--%>
-		<%--<label class="form-label col-xs-4 col-sm-3">最后赠送：</label>--%>
+		<%--<label class="form-label col-xs-4 col-sm-3">最后宣传：</label>--%>
 		<%--<div class="formControls col-xs-8 col-sm-9">--%>
-			<%--<input type="text" class="input-text Wdate" style="height:31px;" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" autocomplete="off" placeholder="最后赠送" id="lastTime" name="lastTime" value="<fmt:formatDate value="${info.lastTime}" pattern="yyyy-MM-dd"/>"/>--%>
+			<%--<input type="text" class="input-text Wdate" style="height:31px;" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" autocomplete="off" placeholder="最后宣传" id="lastTime" name="lastTime" value="<fmt:formatDate value="${info.lastTime}" pattern="yyyy-MM-dd"/>"/>--%>
 		<%--</div>--%>
 	<%--</div>--%>
 	<%--<div class="row cl">--%>
-		<%--<label class="form-label col-xs-4 col-sm-3">经销商赠送：</label>--%>
+		<%--<label class="form-label col-xs-4 col-sm-3">经销商宣传：</label>--%>
 		<%--<div class="formControls col-xs-8 col-sm-9">--%>
-			<%--<input type="text" class="input-text" autocomplete="off" placeholder="经销商赠送" id="dealerGiveNum" name="dealerGiveNum" value="${info.dealerGiveNum}"/>--%>
+			<%--<input type="text" class="input-text" autocomplete="off" placeholder="经销商宣传" id="dealerGiveNum" name="dealerGiveNum" value="${info.dealerGiveNum}"/>--%>
 		<%--</div>--%>
 	<%--</div>--%>
 	<%--<div class="row cl">--%>
-		<%--<label class="form-label col-xs-4 col-sm-3">公司赠送：</label>--%>
+		<%--<label class="form-label col-xs-4 col-sm-3">公司宣传：</label>--%>
 		<%--<div class="formControls col-xs-8 col-sm-9">--%>
-			<%--<input type="text" class="input-text" autocomplete="off" placeholder="公司赠送" id="companyGiveNum" name="companyGiveNum" value="${info.companyGiveNum}"/>--%>
+			<%--<input type="text" class="input-text" autocomplete="off" placeholder="公司宣传" id="companyGiveNum" name="companyGiveNum" value="${info.companyGiveNum}"/>--%>
 		<%--</div>--%>
 	<%--</div>--%>
 	<div class="row cl">

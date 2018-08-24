@@ -65,8 +65,8 @@
                         <p><a><i>${pageInfo.total}</i>条信息</a></p>
                     </dd>
                     <dt class="abtn">
-                        <a href="javascript:" ${params.giveTypeKD==4?'class="on"':''} data-importtype="4">赠送给客户</a>
-                        <a href="javascript:" ${params.giveTypeKD==1?'class="on"':''} data-importtype="1">赠送给经销商</a>
+                        <a href="javascript:" ${params.giveTypeKD==4?'class="on"':''} data-importtype="4">宣传给客户</a>
+                        <a href="javascript:" ${params.giveTypeKD==1?'class="on"':''} data-importtype="1">宣传给经销商</a>
                     </dt>
                 </dl>
                 <div class="bigbiaoge kd">
@@ -397,7 +397,7 @@
     function addTr() {
         var dealerId=$("#dealerId").val();
         if(!dealerId && $(".addTd").length>2){
-            layer.msg("H0000的公司赠送最多为三个品种");
+            layer.msg("H0000的公司宣传最多为三个品种");
             return false;
         }
         var html= '';
@@ -430,7 +430,7 @@
         $("#productTr").append(html);
         trNum += 1;
     }
-    /*产品赠送添加*/
+    /*产品宣传添加*/
     function showZSCP(giveId,dealerId,giveType){
         $.ajax({
             url:"<%=basePath%>givePc/queryGiveProduct.html",

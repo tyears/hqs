@@ -21,7 +21,7 @@
             <td id="orderTypeP" style="text-align: center">经销商【${give.dealer_num}】</td>
         </tr>
         <tr>
-            <td id="dealerMessageP" valign="top"><span style="float: left; width:50px;">赠送：</span><i
+            <td id="dealerMessageP" valign="top"><span style="float: left; width:50px;">宣传：</span><i
                     style="float: right; width:176px;"><c:forEach items="${giveProductList}" var="data"><em
                     style="display: inline-block; font-style: normal;">${data.productNum}${data.productName};</em></c:forEach></i>
             </td>

@@ -794,7 +794,7 @@
         })
     })	*/
 
-    /*产品赠送添加*/
+    /*产品宣传添加*/
 
     $('.tianjia1').click(function () {
         $(".append_in").append("<tr><td class='dtd'><input class='shuru' value='请输入内容'><div class='neir'><p>分类 - 产品名 - 适用食品</p><p>分类 - 产品名 - 适用食品</p><p>分类 - 产品名 - 适用食品</p><p>分类 - 产品名 - 适用食品</p><p>分类 - 产品名 - 适用食品</p><p>分类 - 产品名 - 适用食品</p><p>分类 - 产品名 - 适用食品</p><p>分类 - 产品名 - 适用食品</p><p>分类 - 产品名 - 适用食品</p><p>分类 - 产品名 - 适用食品</p><p>分类 - 产品名 - 适用食品</p><p>分类 - 产品名 - 适用食品</p></div></td><td class='shanchu'><a href='javascript:'>删除</a></td></tr>");

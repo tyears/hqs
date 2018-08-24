@@ -105,7 +105,7 @@
             <div class="biao">
                 <table>
                     <tr>
-                        <th>赠送产品</th>
+                        <th>宣传产品</th>
                         <th>数量</th>
                     </tr>
                     <tr>
@@ -140,7 +140,7 @@
             <div class="biao">
                 <table class="append_t" id="productTr">
                     <tr>
-                        <th>赠送产品</th>
+                        <th>宣传产品</th>
                         <%--<th>数量</th>--%>
                     </tr>
                     <tr>
