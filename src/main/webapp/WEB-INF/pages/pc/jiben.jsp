@@ -200,6 +200,7 @@
             var orderId = $("#left_top").contents().find('#orderId').val();
         }
         var orderTel = "${params.get('orderTel')}";
+        //var orderTel=${params.orderTelStr};
         $.post("order/saveChangeRecord.html",{id:id,content:content,orderId:orderId,orderTel:orderTel},function (data) {
             if(data.result){
                 window.location.reload();

@@ -17,7 +17,7 @@
 <th>备注</th>
 </tr>
 <c:forEach items="${pageInfo.list}" var="data" varStatus="vs">
-    <tr style="cursor:pointer;" onClick="tiaozhuan('${data.id}','${data.register_tel}')" <c:if test="${vs.index%2==1}">class="bg_hui"</c:if>>
+    <tr style="cursor:pointer;" onClick="tiaozhuan('${data.id}','${empty data.register_tel?data.delivery_tel:data.register_tel}')" <c:if test="${vs.index%2==1}">class="bg_hui"</c:if>>
         <td>${vs.count+(pageInfo.pageNum-1)*pageInfo.pageSize}</td>
         <td>${data.dealer_num}</td>
         <td>${data.register_tel}</td>
