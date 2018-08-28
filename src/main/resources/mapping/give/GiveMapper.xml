@@ -3,7 +3,7 @@
 <mapper namespace="com.cccuu.project.mapper.give.GiveMapper" >
     <select id="queryListByParams" resultType="java.util.Map" parameterType="java.util.Map">
         SELECT t.*,ta.area_name,d.dealer_num,d.company_name,d.register_tel,d.district_name,d.name as dname,d.delivery_address,d.dealer_type AS ddealer_type,
-        d.overall_merit,d.cooperation_state,d.id AS did
+        d.overall_merit,d.cooperation_state,d.id AS did,d.sms_address,d.delivery_tel
         ,o.name,o.tel,o.address,o.product_names,o.order_num,o.dealer_type,o.transfer_man_name,o.id AS oid
         FROM t_give t
         LEFT JOIN t_dealer d ON d.id=t.dealer_id

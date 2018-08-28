@@ -501,11 +501,11 @@ public class GivePcController extends BaseController {
             List<Map<String,Object>> result = giveService.queryListGive(params);
             String[] sheetName = new String[] {"快递信息导出"};
             List<Object[]> titleList = new ArrayList<>();
-            Object[] title = new Object[]{"单号","日期","姓名","手机号码","地址","产品","宣传类型","操作员","快递单号","经销商"};
+            Object[] title = new Object[]{"单号","日期","姓名","手机号码","地址","产品","宣传类型","操作员","快递单号","经销商","电话","短信地址","单位市场","经销商编号"};
             titleList.add(title);
             List<Object[]> dataList = new ArrayList<>();
             for (int i = 0; i <result.size() ; i++) {
-                Object[] obj = new Object[10];
+                Object[] obj = new Object[14];
                 obj[0]=result.get(i).get("only_num");
                 obj[1]=result.get(i).get("create_time").toString().substring(0,10);
 //                String numArry=result.get(i).get("give_content").toString();
@@ -536,6 +536,10 @@ public class GivePcController extends BaseController {
                 obj[7]=result.get(i).get("give_man_name");
                 obj[8]=result.get(i).get("goods_num");
                 obj[9]=result.get(i).get("dname");
+                obj[10]=result.get(i).get("delivery_tel");
+                obj[11]=result.get(i).get("sms_address");
+                obj[12]=result.get(i).get("area_name");
+                obj[13]=result.get(i).get("dealer_num");
                 dataList.add(obj);
             }
 
