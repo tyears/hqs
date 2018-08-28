@@ -501,11 +501,11 @@ public class GivePcController extends BaseController {
             List<Map<String,Object>> result = giveService.queryListGive(params);
             String[] sheetName = new String[] {"快递信息导出"};
             List<Object[]> titleList = new ArrayList<>();
-            Object[] title = new Object[]{"单号","日期","姓名","手机号码","地址","产品","宣传类型","操作员","快递单号"};
+            Object[] title = new Object[]{"单号","日期","姓名","手机号码","地址","产品","宣传类型","操作员","快递单号","经销商"};
             titleList.add(title);
             List<Object[]> dataList = new ArrayList<>();
             for (int i = 0; i <result.size() ; i++) {
-                Object[] obj = new Object[9];
+                Object[] obj = new Object[10];
                 obj[0]=result.get(i).get("only_num");
                 obj[1]=result.get(i).get("create_time").toString().substring(0,10);
 //                String numArry=result.get(i).get("give_content").toString();
@@ -535,6 +535,7 @@ public class GivePcController extends BaseController {
                 }
                 obj[7]=result.get(i).get("give_man_name");
                 obj[8]=result.get(i).get("goods_num");
+                obj[9]=result.get(i).get("dname");
                 dataList.add(obj);
             }
 

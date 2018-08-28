@@ -115,16 +115,16 @@ public class DealerController extends BaseController {
 				}
 			}
 			modelAndView.addObject("otherphone",otherphone);
-			Area area=areaService.get(info.getDistrictId());
-			String areaName=area.getAreaName();
+//			Area area=areaService.get(info.getDistrictId());
+//			String areaName=area.getAreaName();
+//
+//			area=areaService.get(info.getCityId());
+//			areaName=area.getAreaName()+areaName;
+//
+//			area=areaService.get(info.getCityId());
+//			areaName=area.getAreaName()+areaName;
 
-			area=areaService.get(info.getCityId());
-			areaName=area.getAreaName()+areaName;
-
-			area=areaService.get(info.getCityId());
-			areaName=area.getAreaName()+areaName;
-
-			info.setDistrictName(areaName);
+			//info.setDistrictName(areaName);
 		}else {
 
 			Area area=areaService.get(fkId);
