@@ -717,13 +717,13 @@ public class OrderController extends BaseController {
 				}
 				if("10".equals(state)){
 					if(info.getNoHeardNum()==0){
-						info.setTransferTime(DateUtils.addDateMinut(new Date(),4));
+						info.setTransferTime(DateUtils.addDateMinutWithMinutes(new Date(),30));
 						info.setNoHeardNum(1);
 					}else if(info.getNoHeardNum()==1){
-						info.setTransferTime(DateUtils.addDateMinut(new Date(),4));
+						info.setTransferTime(DateUtils.addDateMinutWithMinutes(new Date(),30));
 						info.setNoHeardNum(2);
 					}else if(info.getNoHeardNum()==2){
-						info.setTransferTime(DateUtils.addDateMinut(new Date(),4));
+						info.setTransferTime(DateUtils.addDateMinutWithMinutes(new Date(),30));
 						info.setNoHeardNum(3);
 					}else if(info.getNoHeardNum()==3){
 						info.setTransferTime(new Date());

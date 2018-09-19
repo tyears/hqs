@@ -181,6 +181,13 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 		date = cal.getTime();
 		return date;
 	}
+	public static Date addDateMinutWithMinutes(Date date, int minutes){
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		cal.add(Calendar.MINUTE, minutes);// 24小时制
+		date = cal.getTime();
+		return date;
+	}
 	/**
 	 * @param args
 	 * @throws ParseException
