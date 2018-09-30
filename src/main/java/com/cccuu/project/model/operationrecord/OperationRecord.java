@@ -54,9 +54,13 @@ public class OperationRecord extends BaseModel{
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "is_import_time")
 	private Date isImportTime;//导入时间
-	
-		
+
+	@Column(name="reserved1")
+	private String dealerId;
+
+
 	/**
+
 	 * 获取操作人id
 	 * @return
 	 */		
@@ -150,4 +154,13 @@ public class OperationRecord extends BaseModel{
 	public void setIsImportTime(Date isImportTime) {
 		this.isImportTime = isImportTime;
 	}
+
+	public String getDealerId() {
+		return dealerId;
+	}
+
+	public void setDealerId(String dealerId) {
+		this.dealerId = dealerId;
+	}
+
 }

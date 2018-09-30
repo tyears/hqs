@@ -120,6 +120,7 @@
                             <input type="hidden" id="pageNum" name="pageNum" value="1"/>
                             <input type="hidden" id="pageSize" name="pageSize" value="10"/>
                             <input type="hidden" name="orderTel" value="${params.orderTelStr}"/>
+                            <input type="hidden" name="dealerId" value="${params.dealerId}" />
                         </form>
                     </div>
                     <div class="biao" id="mainContent"></div>
@@ -200,8 +201,9 @@
             var orderId = $("#left_top").contents().find('#orderId').val();
         }
         var orderTel = "${params.get('orderTel')}";
+        var dealerId="${params.dealerId}";
         //var orderTel=${params.orderTelStr};
-        $.post("order/saveChangeRecord.html",{id:id,content:content,orderId:orderId,orderTel:orderTel},function (data) {
+        $.post("order/saveChangeRecord.html",{id:id,content:content,orderId:orderId,orderTel:orderTel,dealerId:dealerId},function (data) {
             if(data.result){
                 window.location.reload();
             }else{

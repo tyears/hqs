@@ -18,15 +18,18 @@
             <if test="isImport != null" >
                 and t.is_import =  #{isImport,jdbcType=VARCHAR}
             </if>
+            <if test="dealerId !=null and dealerId!='' ">
+                or t.reserved1= #{dealerId,jdbcType=VARCHAR}
+            </if>
         </where>
         order by t.create_time desc
     </select>
 
     <insert id="addMulti" parameterType="java.util.List">
-        insert into t_operation_record (id,user_id,user_name, content, order_id,create_time, order_tel,is_import,is_import_time)
+        insert into t_operation_record (id,user_id,user_name, content, order_id,create_time, order_tel,is_import,is_import_time,reserved1)
         values
         <foreach collection="list" item="item" index="index" separator="," >
-            (#{item.id},#{item.userId},#{item.userName},#{item.content},#{item.orderId},#{item.createTime},#{item.orderTel},#{item.isImport},#{item.isImportTime}
+            (#{item.id},#{item.userId},#{item.userName},#{item.content},#{item.orderId},#{item.createTime},#{item.orderTel},#{item.isImport},#{item.isImportTime},#{item.dealerId}
             )
         </foreach>
     </insert>

@@ -912,11 +912,13 @@ public class OrderController extends BaseController {
 				operationRecord.setOrderTel(orderTel);
 				operationRecord.setCreateTime(new Date());
 			}
+			String dealerId = request.getParameter("dealerId");
 			UserInfo userInfo= (UserInfo) getSessionAttribute(request,Constants.SESSION_USER);
 			operationRecord.setContent(content);
 			operationRecord.setUserId(userInfo.getUserId());
 			operationRecord.setUserName(userInfo.getUserName());
 			operationRecord.setIsImport("0");
+			operationRecord.setReserved1(dealerId);
 //			operationRecord.setIsImportTime(new Date());
 			operationRecordService.insertOrUpdate(operationRecord);
 			returnInfo.setResult(true);

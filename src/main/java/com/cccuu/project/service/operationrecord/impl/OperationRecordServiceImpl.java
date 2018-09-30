@@ -47,7 +47,8 @@ public class OperationRecordServiceImpl extends BaseServiceImpl<OperationRecord>
 		String orderTel = params.get("orderTel");
 		String[] telList = orderTel.split(",");
 		parameterMap.put("telList", telList);
-
+		String dealerId=params.get("dealerId");
+		parameterMap.put("dealerId",dealerId);
 
 		//设置分页参数
 		String pageNumStr = params.get("pageNum");
