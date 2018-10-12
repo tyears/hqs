@@ -63,4 +63,5 @@ public interface AreaService extends BaseService<Area>{
 	 */
 	public int addMulti(List<Area> list);
 	public void updateAreaMerit();
+	public String getFkId(String areaName);
 }

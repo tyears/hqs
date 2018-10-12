@@ -235,7 +235,8 @@ public class AreaController extends BaseController {
 			List<String> list3=new ArrayList<>();
 			List<Area> areaList3=new ArrayList<>();
 			Map<String,String> idMap=new HashMap<>();
-			//已有区域
+			String exists_fk_id="";
+			//已存在市区县级列表
 			Area oldArea=new Area();
 			oldArea.setLevel(2);
 			List<Area> oldList=areaService.queryBySelective(oldArea);
@@ -243,14 +244,33 @@ public class AreaController extends BaseController {
 			for (Area area : oldList) {
 				oldString.add(area.getAreaName());
 			}
+			//已存在市级区划列表
+			Area oldCity=new Area();
+			oldCity.setLevel(1);
+			List<Area> oldCityList=areaService.queryBySelective(oldCity);
+			List<String> oldCityString=new ArrayList<>();
+			for (Area area : oldCityList) {
+				oldCityString.add(area.getAreaName());
+			}
+			//已存在省级区划列表
+			Area oldProvince=new Area();
+			oldProvince.setLevel(0);
+			List<Area> oldProvinceList=areaService.queryBySelective(oldProvince);
+			List<String> oldProvinceString=new ArrayList<>();
+			for (Area area : oldProvinceList) {
+				oldProvinceString.add(area.getAreaName());
+			}
+
 			for (List<Object> objects : listob) {
-				if(!oldString.contains((String) objects.get(2))){
+				String distinct=(String) objects.get(2);
+				if(!oldString.contains(distinct)){
 					//省
-					if(!list1.contains((String) objects.get(0))){
-						list1.add((String) objects.get(0));
+					String province=(String) objects.get(0);
+					if(!oldProvinceString.contains(province)){
+						list1.add((String) province);
 						Area area=new Area();
 						area.setId(UniqueIDGen.getUniqueID()+"");
-						area.setAreaName((String) objects.get(0));
+						area.setAreaName((String) province);
 						area.setFkId("0");
 						area.setSort(1);
 						area.setIsParent("true");
@@ -260,22 +280,23 @@ public class AreaController extends BaseController {
 					}
 
 					//市
-					if("省直辖县级行政单位".equals((String) objects.get(1))){
-						if(!list21.contains(objects.get(0)+(String) objects.get(1))){
-							list21.add(objects.get(0)+(String) objects.get(1));
+					String city=(String) objects.get(1);
+					if("省直辖县级行政单位".equals(city)){
+						if(!oldCityString.contains(city)){
+							list21.add(province+city);
 							Area area=new Area();
 							area.setId(UniqueIDGen.getUniqueID()+"");
-							area.setAreaName((String) objects.get(1));
+							area.setAreaName(city);
 							//父级名称当父级id
-							area.setFkId((String) objects.get(0));
+							area.setFkId(province);
 							area.setSort(1);
 							area.setIsParent("true");
 							area.setLevel(1);
 							areaList2.add(area);
-							idMap.put(objects.get(0)+(String) objects.get(1),area.getId());
+							idMap.put(province+city,area.getId());
 						}
 					}else if("县".equals((String) objects.get(1))){
-						if(!list22.contains(objects.get(0)+(String) objects.get(1))){
+						if(!oldCityString.contains(objects.get(0)+(String) objects.get(1))){
 							list22.add(objects.get(0)+(String) objects.get(1));
 							Area area=new Area();
 							area.setId(UniqueIDGen.getUniqueID()+"");
@@ -288,27 +309,31 @@ public class AreaController extends BaseController {
 							areaList2.add(area);
 							idMap.put(objects.get(0)+(String) objects.get(1),area.getId());
 						}
-					}else if(!list23.contains((String) objects.get(1))){
-						list23.add((String) objects.get(1));
+					}else if(!oldCityString.contains(city)){
+						list23.add(city);
 						Area area=new Area();
 						area.setId(UniqueIDGen.getUniqueID()+"");
-						area.setAreaName((String) objects.get(1));
+						area.setAreaName(city);
 						//父级名称当父级id
-						area.setFkId((String) objects.get(0));
+						area.setFkId(province);
 						area.setSort(1);
 						area.setIsParent("true");
 						area.setLevel(1);
 						areaList2.add(area);
-						idMap.put(objects.get(0)+(String) objects.get(1),area.getId());
+						idMap.put(province+city,area.getId());
+					}else{
+						exists_fk_id=areaService.getFkId(city);
+						idMap.put(province+city,exists_fk_id);
 					}
 
 					//区
-					if(!list3.contains((String) objects.get(2))){
-						list3.add((String) objects.get(2));
+
+					if(!list3.contains(distinct)){
+						list3.add(distinct);
 						Area area=new Area();
 						area.setId(UniqueIDGen.getUniqueID()+"");
-						area.setAreaName((String) objects.get(2));
-						area.setFkId(objects.get(0)+(String) objects.get(1));
+						area.setAreaName(distinct);
+						area.setFkId(province+city);
 						area.setSort(1);
 						area.setIsParent("false");
 						area.setLevel(2);

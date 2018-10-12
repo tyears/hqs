@@ -174,4 +174,5 @@ public class AreaServiceImpl extends BaseServiceImpl<Area> implements AreaServic
 	public void updateAreaMerit(){
 		areaMapper.updateAreaMerit();
 	}
+	public String getFkId(String areaName){return areaMapper.getFkId(areaName);}
 }

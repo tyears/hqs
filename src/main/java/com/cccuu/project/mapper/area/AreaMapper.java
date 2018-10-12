@@ -19,4 +19,5 @@ public interface AreaMapper extends BaseMapper<Area>{
      */
     public int addMulti(List<Area> list);
     public void updateAreaMerit();
+    public String getFkId(String areaName);
 }

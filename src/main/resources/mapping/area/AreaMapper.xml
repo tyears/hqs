@@ -12,4 +12,7 @@
     <update id="updateAreaMerit">
         update t_area set comment=null
     </update>
+    <select id="getFkId" resultType="java.lang.String">
+        select id from t_area where area_name= #{areaName,jdbcType=VARCHAR} and level=1 and spell is not null
+    </select>
 </mapper>
