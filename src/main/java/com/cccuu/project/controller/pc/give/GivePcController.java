@@ -414,6 +414,7 @@ public class GivePcController extends BaseController {
      * @param request
      * @return
      */
+
     @RequestMapping("toExpressInfo.html")
     public ModelAndView toExpressInfo(HttpServletRequest request){
         ModelAndView modelAndView=new ModelAndView("pc/kuaidi");
@@ -513,9 +514,19 @@ public class GivePcController extends BaseController {
                 String[] numArry=result.get(i).get("give_content").toString().split(";");
                 StringBuilder numStr=new StringBuilder();
                 for (String s : numArry) {
-                    numStr.append(s.substring(0,4)).append(";");
+                    if(s.length()>1) {
+                        numStr.append(s.substring(0, 4)).append(";");
+                    }else{
+                        numStr.append("");
+                    }
                 }
-                obj[5]="食品"+numStr.substring(0,numStr.length()-1);
+                if(numStr.length()>1){
+                    obj[5]="食品"+numStr.substring(0,numStr.length()-1);
+                }else
+                {
+                    obj[5]="食品";
+                }
+
                 String giveType= (String) result.get(i).get("give_type");
                 if("1".equals(giveType)){
                     obj[2]=result.get(i).get("dname");
