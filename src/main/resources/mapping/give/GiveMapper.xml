@@ -98,6 +98,7 @@
             <if test="goodsNumForSearch != null">
                 and t.goods_Num like CONCAT('%',CONCAT(#{goodsNumForSearch,jdbcType=VARCHAR},'%'))
             </if>
+                and t.give_content not like '%t9%'
         </where>
         order by t.create_time DESC
     </select>
