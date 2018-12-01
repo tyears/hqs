@@ -369,12 +369,12 @@
             if(month < 10)
                 clock += "0";
 
-            clock += month ;
+            clock += String(month) ;
 
             if(day < 10)
                 clock += "0";
 
-            clock += day;
+            clock += String(day);
             return clock;
         }
 
