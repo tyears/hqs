@@ -213,7 +213,8 @@
         update t_dealer set overall_merit=null
     </update>
     <select id="historyGiveByDealerId" resultType="java.util.Map">
-        select substr(a.give_time,1,10) as give_time,a.give_content,b.give_status_name,a.give_man_name from t_give a join t_give_status b on b.give_status=a.remark where a.dealer_id=#{dealerID}
+        select substr(a.give_time,1,10) as give_time,a.give_content,b.give_status_name,a.give_man_name from t_give a join t_give_status b on b.give_status=a.remark
+        where a.dealer_id=#{dealerID}  order by give_time desc limit 0,10
     </select>
     <resultMap type="com.cccuu.project.model.dealer.Dealer" id="dealerProductMap">
         <id column="id" property="id"/>
