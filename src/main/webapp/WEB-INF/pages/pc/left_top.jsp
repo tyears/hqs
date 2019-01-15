@@ -21,6 +21,7 @@
             /* 防止水平滚动条 */
             overflow-x: hidden;
         }
+        textarea:focus{border:1px solid #fff;outline: none;padding:2px 1px 0px 0px;}
     </style>
 </head>
 <body>
@@ -44,7 +45,7 @@
                     <td class="mingcheng">来源</td>
                     <td class="w254">${info.importType=='0'?'留言':info.importType=='1'?'来电':''}</td>
                     <td class="mingcheng" rowspan="2">客户<br>留言</td>
-                    <td class="w390" rowspan="2">${info.dealerMessage}</td>
+                    <td class="w390" rowspan="2"><textarea  readonly style="height:75px;width:400px;max-height:75px;max-width:400px;resize: none;border:none;outline: none;padding:2px 1px 0px 0px;">${info.dealerMessage}</textarea></td>
                     <td class="mingcheng">客户类型</td>
                     <td class="w214 khlx">
                     	<span class="shipin">
