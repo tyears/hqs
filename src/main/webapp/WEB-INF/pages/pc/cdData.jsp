@@ -11,25 +11,27 @@
 <tr>
     <th style="width: 5%;">操作</th>
     <th style="width: 8%;">询单编号</th>
+    <th style="width: 8%;">留言类别</th>
     <th style="width: 6%;">调单人</th>
     <th style="width: 8%;">手机号</th>
     <th style="width: 10%;">姓名</th>
     <th style="width: 20%;">客户留言</th>
     <th style="width: 17%;">咨询产品</th>
     <th style="width: 20%;">转单留言</th>
-    <th style="width: 8%;">来电/留言</th>
+
 </tr>
 <c:forEach items="${pageInfo.list}" var="data">
 <tr>
     <td><input type="radio" name="cdTd" value="${data.order_num}"></td>
     <td>${data.order_num}</td>
+    <td>${data.message_type}</td>
     <td>${data.userName}</td>
     <td>${data.tel}</td>
     <td>${data.name}</td>
     <td>${data.dealer_message}</td>
     <td>${data.product_names}</td>
     <td>${data.user_message}</td>
-    <td>${data.import_type == '0' ? '留言' : '来电'}</td>
+
 </tr>
 </c:forEach>
 </table>

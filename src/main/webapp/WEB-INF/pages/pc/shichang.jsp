@@ -44,19 +44,19 @@
                     <table class="hov_mou">
                         <tr>
                             <th>序号</th>
-                            <th>询单编号</th>
-                            <th>部门</th>
-                            <th>客户类型</th>
-                            <th>留言类别</th>
-                            <th>手机号码</th>
-                            <th>姓名</th>
-                            <th>号码归属地</th>
+                            <th style="width:110px">询单编号</th>
+                            <th style="width:90px">部门</th>
+                            <th style="width:90px">客户类型</th>
+                            <th style="width:110px">留言类别</th>
+                            <th style="width:160px">手机号码</th>
+                            <th style="width:90px">姓名</th>
+                            <th style="width:90px">号码归属地</th>
                             <th>客户留言                                                              </th>
-                            <th>转单留言</th>
+                            <th style="width:90px">转单留言</th>
                             <th>地址</th>
-                            <th>操作员</th>
-                            <th>导入日期</th>
-                            <th>转单日期</th>
+                            <th style="width:60px">操作员</th>
+                            <th style="width:110px">导入日期</th>
+                            <th style="width:90px">转单日期</th>
                             <c:if test="${not empty params.isPrint}">
                                 <th>打印状态</th>
                                 <th>操作</th>
