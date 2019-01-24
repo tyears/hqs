@@ -15,6 +15,9 @@
         .smsStyle{
             display:block;resize: none;width: 100%;background-color: #f5f5f5;border: 0px; margin-bottom: 15px;padding: 10px;font-size: 14px;color: #333333;min-height: 140px;
         }
+        .dropdown{
+            width:100%;height:45px;margin:20px 20px 0 0;
+        }
     </style>
     <link rel="stylesheet" type="text/css" href="js/jquery-ui-1.12.1/jquery-ui.min.css" />
     <script type="text/javascript" src="js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
@@ -149,8 +152,19 @@
                 <h3 class="tianjia" onclick="addTr();">添加一个产品</h3>
             </div>
             <div class="ddmidd zssma">
+
+               <!-- <textarea rows="7" placeholder=" 1:成功 &#10 2:拒收 &#10 3:无人接听 &#10 4:挂断 &#10 5:改行 &#10 6:空号 &#10 7:其他" id="zssm" class="smsStyle"></textarea>-->
+                <textarea rows="7" placeholder="此处可以粘贴产品名称做参考" id="todo" class="smsStyle" style="width:100%;"></textarea>
                 <div id="giveStatuslabel">宣传状态：</div>
-                <textarea rows="7" placeholder=" 1:成功 &#10 2:拒收 &#10 3:无人接听 &#10 4:挂断 &#10 5:改行 &#10 6:空号 &#10 7:其他" id="zssm" class="smsStyle"></textarea>
+                <select name="zssm" id="zssm" class="dropdown">
+                    <option value="1" selected="">成功</option>
+                    <option value="2" >拒收</option>
+                    <option value="3">无人接听</option>
+                    <option value="4">挂断</option>
+                    <option value="5">改行</option>
+                    <option value="6">空号</option>
+                    <option value="7">其他</option>
+                </select>
                 <textarea rows="4" placeholder="给客户发短信：" id="khSms" class="smsStyle" ></textarea>
                 <textarea rows="4" placeholder="给经销商发短信：" id="jxsSms" class="smsStyle" ></textarea>
                 <div onclick="saveGive();" style="width: 100%;height: 54px;background: #41973c;text-align: center;line-height: 54px;color: #fff;margin-top: 20px;cursor: pointer;font-size: 15px;font-weight: bold;">确认</div>
@@ -294,10 +308,10 @@
                     var html = '';
                     html+='<table class="hov_mou" id="history_give">';
                     html+='<tr>';
-                    html+='<th class="wh_01">日期</th>';
-                    html+='<th class="wh_02">宣传内容</th>';
-                    html+='<th class="wh_03">宣传情况</th>';
-                    html+='<th class="wh_04">操作员</th>';
+                    html+='<th style="width:100px">日期</th>';
+                    html+='<th >宣传内容</th>';
+                    html+='<th style="width:100px">宣传情况</th>';
+                    html+='<th style="width:100px">操作员</th>';
                     html+='</tr>';
                     for(var p in data.obj) {
                         html+='<tr>';
@@ -355,6 +369,7 @@
             $("#khSms").val(gszsSmsk);
             $("#zssm").hide();
             $("#dyTrue").hide();
+            $("#todo").hide();
             $("#khSms").show();
             $("#jxsSms").show();
             $("#giveStatuslabel").hide();
@@ -366,6 +381,7 @@
             $("#dyTrue").hide();
             $("#khSms").show();
             $("#giveStatuslabel").hide();
+            $("#todo").hide();
             $("#jxsSms").show();
             $("#giveTitle").text("经销商宣传");
         }else if(giveType=='1'){
@@ -373,6 +389,7 @@
             $("#dyTrue").show();
             $("#khSms").hide();
             $("#jxsSms").hide();
+            $("#todo").show();
             $("#giveStatuslabel").show();
             $("#giveTitle").text("宣传给经销商");
         }
