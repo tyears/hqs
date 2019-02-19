@@ -255,7 +255,7 @@
             $("#giveId").val("");
             $("#numBehind").val("");
             $("#goodsNum").val("");
-            $("#smsContent").val("您的免费试用产品快递单号:申通 海韦力官网 http://m.haiweili.com");
+            $("#smsContent").val("您在我公司网站留言申请的免费试用产品已用快递寄出,单号:申通 海韦力官网 http://m.haiweili.com");
             $(".heibg").fadeIn();
             $(".po02").slideDown();
             $("#numBehind").focus();
@@ -283,7 +283,7 @@
                         }
                         $("#giveId").val(giveId);
                         $("#goodsNum").val(goodsNum);
-                        $("#smsContent").val("您的免费试用产品快递单号:申通 "+goodsNum+" 海韦力官网 http://m.haiweili.com");
+                        $("#smsContent").val("您在我公司网站留言申请的免费试用产品已用快递寄出,单号:申通 "+goodsNum+" 海韦力官网 http://m.haiweili.com");
                     }
                 }
             });

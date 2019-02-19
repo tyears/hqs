@@ -83,7 +83,7 @@ public class SmsServiceImpl extends BaseServiceImpl<Sms> implements SmsService{
 		try {
 			if(StringUtils.isNotBlank(phone) && StringUtils.isNotBlank(text)){
 				String code = MD5.MD5Encode(phone+"leasom");
-				text+="退订回N";
+				//text+="退订回N";
 //				String retu = HttpUtil.postRequest(ProjectGlobal.getConfig("smsService"),"phone:"+phone,"text:"+text,"code:"+code);
 				Map params=new HashMap<>();
 				params.put("phone",phone);
